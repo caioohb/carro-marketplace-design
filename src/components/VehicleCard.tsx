@@ -109,7 +109,7 @@ export function VehicleCard({
             </div>
             
             <div className="flex items-center justify-between pt-3 border-t border-brand-100 dark:border-brand-800">
-              <div className="text-2xl font-bold text-brand-primary">
+              <div className="text-2xl font-bold text-brand-secondary">
                 {formatPrice(price)}
               </div>
               <Button 

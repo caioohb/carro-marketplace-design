@@ -15,36 +15,36 @@
     --popover-foreground: 192 100% 3%;
 
     /* Cores principais da marca */
-    --primary: 178 100% 41%; /* #00D2C7 */
+    --primary: 185 100% 17%; /* #005357 */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 185 92% 22%; /* #006F75 */
-    --secondary-foreground: 180 100% 95%;
+    --secondary: 178 100% 41%; /* #00D2C7 */
+    --secondary-foreground: 185 100% 17%;
 
     --muted: 185 92% 96%;
     --muted-foreground: 185 20% 46%;
 
-    --accent: 178 95% 85%; /* Tom claro do turquesa para hover */
-    --accent-foreground: 192 100% 15%;
+    --accent: 185 100% 25%; /* Tom mais claro do #005357 */
+    --accent-foreground: 180 100% 95%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 178 30% 90%;
-    --input: 178 30% 90%;
-    --ring: 178 100% 41%;
+    --border: 185 30% 90%;
+    --input: 185 30% 90%;
+    --ring: 185 100% 17%;
 
     --radius: 0.5rem;
 
     /* Cores específicas do sidebar usando a paleta da marca */
-    --sidebar-background: 185 92% 22%; /* #006F75 */
+    --sidebar-background: 185 100% 17%; /* #005357 */
     --sidebar-foreground: 180 100% 95%;
     --sidebar-primary: 178 100% 41%; /* #00D2C7 */
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 185 100% 17%; /* #005357 */
+    --sidebar-accent: 185 100% 20%; /* Tom ligeiramente mais claro do #005357 */
     --sidebar-accent-foreground: 180 100% 95%;
-    --sidebar-border: 185 100% 17%;
-    --sidebar-ring: 178 100% 41%;
+    --sidebar-border: 185 100% 20%;
+    --sidebar-ring: 185 100% 17%;
 
     /* Variações da marca para diferentes usos */
     --brand-light: 178 100% 85%; /* Versão clara do turquesa */
@@ -63,16 +63,16 @@
     --popover: 185 100% 8%;
     --popover-foreground: 180 100% 95%;
 
-    --primary: 178 100% 41%; /* #00D2C7 */
-    --primary-foreground: 192 100% 3%;
+    --primary: 185 100% 17%; /* #005357 */
+    --primary-foreground: 180 100% 95%;
 
-    --secondary: 185 100% 17%; /* #005357 */
-    --secondary-foreground: 180 100% 95%;
+    --secondary: 178 100% 41%; /* #00D2C7 */
+    --secondary-foreground: 185 100% 17%;
 
     --muted: 185 100% 10%;
     --muted-foreground: 185 30% 65%;
 
-    --accent: 185 100% 15%;
+    --accent: 185 100% 20%;
     --accent-foreground: 180 100% 95%;
 
     --destructive: 0 62% 50%;
@@ -80,16 +80,16 @@
 
     --border: 185 100% 15%;
     --input: 185 100% 15%;
-    --ring: 178 100% 41%;
+    --ring: 185 100% 17%;
 
     --sidebar-background: 185 100% 17%; /* #005357 */
     --sidebar-foreground: 180 100% 95%;
     --sidebar-primary: 178 100% 41%; /* #00D2C7 */
-    --sidebar-primary-foreground: 192 100% 3%;
-    --sidebar-accent: 185 92% 22%; /* #006F75 */
+    --sidebar-primary-foreground: 185 100% 17%;
+    --sidebar-accent: 185 100% 20%;
     --sidebar-accent-foreground: 180 100% 95%;
-    --sidebar-border: 185 92% 22%;
-    --sidebar-ring: 178 100% 41%;
+    --sidebar-border: 185 100% 20%;
+    --sidebar-ring: 185 100% 17%;
   }
 }
 
@@ -104,14 +104,6 @@
 }
 
 @layer components {
-  .gradient-bg {
-    @apply bg-gradient-to-br from-primary to-brand-dark;
-  }
-  
-  .gradient-brand {
-    background: linear-gradient(135deg, #00D2C7 0%, #005357 100%);
-  }
-  
   .hover-scale {
     @apply transition-all duration-300 hover:scale-[1.02];
   }

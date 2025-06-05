@@ -65,20 +65,20 @@ export default {
 				},
 				// Cores específicas da marca TALENTO
 				brand: {
-					primary: '#00D2C7',    // Turquesa claro - cor principal
-					secondary: '#006F75',  // Azul petróleo
-					dark: '#005357',       // Verde-azulado escuro
-					darker: '#0C0C0C',     // Quase preto
+					primary: '#005357',    // Cor predominante
+					secondary: '#00D2C7',  // Turquesa claro
 					light: '#66E5DF',      // Tom claro do turquesa
 					medium: '#33DBD4',     // Tom médio do turquesa
+					dark: '#005357',       // Cor predominante
+					darker: '#0C0C0C',     // Quase preto
 					50: '#f0fdfc',
 					100: '#ccfbf1',
 					200: '#99f6e4',
 					300: '#5eead4',
 					400: '#2dd4bf',
-					500: '#00D2C7',       // Cor principal
-					600: '#006F75',       // Cor secundária
-					700: '#005357',       // Cor de destaque
+					500: '#005357',       // Cor predominante
+					600: '#004a4d',       // Tom mais escuro
+					700: '#003d40',       // Tom ainda mais escuro
 					800: '#134e4a',
 					900: '#0c2d30',
 					950: '#0C0C0C',       // Fundo escuro
@@ -118,25 +118,12 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
-				},
-				'gradient-shift': {
-					'0%, 100%': {
-						'background-position': '0% 50%'
-					},
-					'50%': {
-						'background-position': '100% 50%'
-					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.3s ease-out',
-				'gradient-shift': 'gradient-shift 3s ease-in-out infinite'
-			},
-			backgroundImage: {
-				'gradient-brand': 'linear-gradient(135deg, #00D2C7 0%, #005357 100%)',
-				'gradient-brand-light': 'linear-gradient(135deg, #66E5DF 0%, #006F75 100%)',
+				'fade-in': 'fade-in 0.3s ease-out'
 			}
 		}
 	},

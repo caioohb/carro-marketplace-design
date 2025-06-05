@@ -83,7 +83,7 @@ export function AppSidebar({ isAdmin = false }: AppSidebarProps) {
 
   return (
     <Sidebar className="border-r border-sidebar-border bg-sidebar">
-      <SidebarHeader className="border-b border-sidebar-border p-6 bg-gradient-brand">
+      <SidebarHeader className="border-b border-sidebar-border p-6 bg-brand-primary">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30">
             <Car className="w-6 h-6 text-white" />
@@ -142,8 +142,8 @@ export function AppSidebar({ isAdmin = false }: AppSidebarProps) {
       
       <SidebarFooter className="border-t border-sidebar-border p-4 bg-sidebar-accent/50">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-brand-primary/20 rounded-full flex items-center justify-center border border-brand-primary/30">
-            {isAdmin ? <Shield className="w-5 h-5 text-brand-primary" /> : <Users className="w-5 h-5 text-brand-primary" />}
+          <div className="w-10 h-10 bg-brand-secondary/20 rounded-full flex items-center justify-center border border-brand-secondary/30">
+            {isAdmin ? <Shield className="w-5 h-5 text-brand-secondary" /> : <Users className="w-5 h-5 text-brand-secondary" />}
           </div>
           <div>
             <p className="text-sm font-semibold text-sidebar-foreground">
