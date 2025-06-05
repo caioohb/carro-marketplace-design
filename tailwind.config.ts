@@ -63,20 +63,29 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Cores da marca Talento
-				talento: {
-					50: '#edfcfc',
-					100: '#d3f6f6',
-					200: '#aceced',
-					300: '#76ddde',
-					400: '#39c5c7',
-					500: '#1da8aa',
-					600: '#198689',
-					700: '#1c6b6e',
-					800: '#1e5658',
-					900: '#1d484a',
-					950: '#0c2d30',
+				// Cores específicas da marca TALENTO
+				brand: {
+					primary: '#00D2C7',    // Turquesa claro - cor principal
+					secondary: '#006F75',  // Azul petróleo
+					dark: '#005357',       // Verde-azulado escuro
+					darker: '#0C0C0C',     // Quase preto
+					light: '#66E5DF',      // Tom claro do turquesa
+					medium: '#33DBD4',     // Tom médio do turquesa
+					50: '#f0fdfc',
+					100: '#ccfbf1',
+					200: '#99f6e4',
+					300: '#5eead4',
+					400: '#2dd4bf',
+					500: '#00D2C7',       // Cor principal
+					600: '#006F75',       // Cor secundária
+					700: '#005357',       // Cor de destaque
+					800: '#134e4a',
+					900: '#0c2d30',
+					950: '#0C0C0C',       // Fundo escuro
 				}
+			},
+			fontFamily: {
+				sans: ['Inter', 'system-ui', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -109,12 +118,25 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
+				},
+				'gradient-shift': {
+					'0%, 100%': {
+						'background-position': '0% 50%'
+					},
+					'50%': {
+						'background-position': '100% 50%'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.3s ease-out'
+				'fade-in': 'fade-in 0.3s ease-out',
+				'gradient-shift': 'gradient-shift 3s ease-in-out infinite'
+			},
+			backgroundImage: {
+				'gradient-brand': 'linear-gradient(135deg, #00D2C7 0%, #005357 100%)',
+				'gradient-brand-light': 'linear-gradient(135deg, #66E5DF 0%, #006F75 100%)',
 			}
 		}
 	},

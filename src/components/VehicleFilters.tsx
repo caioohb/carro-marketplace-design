@@ -38,27 +38,27 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
   const activeFiltersCount = Object.values(filters).filter(value => value !== "").length;
 
   return (
-    <Card className="mb-6">
-      <CardContent className="p-4">
-        <div className="space-y-4">
+    <Card className="mb-6 border-brand-200 dark:border-brand-700 bg-white dark:bg-brand-darker shadow-lg">
+      <CardContent className="p-6">
+        <div className="space-y-6">
           {/* Barra de pesquisa */}
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-brand-400 w-5 h-5" />
             <Input
               placeholder="Pesquisar por modelo, marca ou ano..."
               value={filters.search}
               onChange={(e) => updateFilter('search', e.target.value)}
-              className="pl-10 h-12"
+              className="pl-12 h-12 border-brand-200 dark:border-brand-700 focus:border-brand-primary focus:ring-brand-primary/20 bg-white dark:bg-brand-darker text-brand-darker dark:text-brand-50"
             />
           </div>
 
           {/* Filtros em linha */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <Select value={filters.brand} onValueChange={(value) => updateFilter('brand', value)}>
-              <SelectTrigger>
+              <SelectTrigger className="border-brand-200 dark:border-brand-700 focus:border-brand-primary focus:ring-brand-primary/20 bg-white dark:bg-brand-darker">
                 <SelectValue placeholder="Marca" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white dark:bg-brand-darker border-brand-200 dark:border-brand-700">
                 <SelectItem value="all">Todas as marcas</SelectItem>
                 {brands.map((brand) => (
                   <SelectItem key={brand} value={brand.toLowerCase()}>
@@ -69,10 +69,10 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
             </Select>
 
             <Select value={filters.priceRange} onValueChange={(value) => updateFilter('priceRange', value)}>
-              <SelectTrigger>
+              <SelectTrigger className="border-brand-200 dark:border-brand-700 focus:border-brand-primary focus:ring-brand-primary/20 bg-white dark:bg-brand-darker">
                 <SelectValue placeholder="Faixa de preço" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white dark:bg-brand-darker border-brand-200 dark:border-brand-700">
                 <SelectItem value="all">Qualquer preço</SelectItem>
                 {priceRanges.map((range) => (
                   <SelectItem key={range.value} value={range.value}>
@@ -83,10 +83,10 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
             </Select>
 
             <Select value={filters.year} onValueChange={(value) => updateFilter('year', value)}>
-              <SelectTrigger>
+              <SelectTrigger className="border-brand-200 dark:border-brand-700 focus:border-brand-primary focus:ring-brand-primary/20 bg-white dark:bg-brand-darker">
                 <SelectValue placeholder="Ano" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white dark:bg-brand-darker border-brand-200 dark:border-brand-700">
                 <SelectItem value="all">Qualquer ano</SelectItem>
                 <SelectItem value="2024">2024</SelectItem>
                 <SelectItem value="2023">2023</SelectItem>
@@ -98,10 +98,10 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
             </Select>
 
             <Select value={filters.fuel} onValueChange={(value) => updateFilter('fuel', value)}>
-              <SelectTrigger>
+              <SelectTrigger className="border-brand-200 dark:border-brand-700 focus:border-brand-primary focus:ring-brand-primary/20 bg-white dark:bg-brand-darker">
                 <SelectValue placeholder="Combustível" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white dark:bg-brand-darker border-brand-200 dark:border-brand-700">
                 <SelectItem value="all">Qualquer combustível</SelectItem>
                 <SelectItem value="flex">Flex</SelectItem>
                 <SelectItem value="gasolina">Gasolina</SelectItem>
@@ -113,10 +113,10 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
             </Select>
 
             <Select value={filters.transmission} onValueChange={(value) => updateFilter('transmission', value)}>
-              <SelectTrigger>
+              <SelectTrigger className="border-brand-200 dark:border-brand-700 focus:border-brand-primary focus:ring-brand-primary/20 bg-white dark:bg-brand-darker">
                 <SelectValue placeholder="Câmbio" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white dark:bg-brand-darker border-brand-200 dark:border-brand-700">
                 <SelectItem value="all">Qualquer câmbio</SelectItem>
                 <SelectItem value="manual">Manual</SelectItem>
                 <SelectItem value="automatico">Automático</SelectItem>
@@ -127,10 +127,10 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
 
           {/* Filtros ativos e botão limpar */}
           {activeFiltersCount > 0 && (
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Filter className="w-4 h-4 text-gray-500" />
-                <span className="text-sm text-gray-600">
+            <div className="flex items-center justify-between pt-4 border-t border-brand-100 dark:border-brand-800">
+              <div className="flex items-center gap-3">
+                <Filter className="w-5 h-5 text-brand-500" />
+                <span className="text-sm text-brand-600 dark:text-brand-300 font-medium">
                   {activeFiltersCount} filtro{activeFiltersCount > 1 ? 's' : ''} ativo{activeFiltersCount > 1 ? 's' : ''}
                 </span>
               </div>
@@ -138,9 +138,9 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
                 variant="outline" 
                 size="sm" 
                 onClick={onClearFilters}
-                className="text-gray-600"
+                className="text-brand-600 border-brand-200 hover:bg-brand-50 hover:border-brand-300 dark:text-brand-300 dark:border-brand-700 dark:hover:bg-brand-800"
               >
-                <X className="w-4 h-4 mr-1" />
+                <X className="w-4 h-4 mr-2" />
                 Limpar filtros
               </Button>
             </div>

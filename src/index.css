@@ -6,82 +6,90 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 192 100% 3%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 192 100% 3%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 192 100% 3%;
 
-    --primary: 188 79% 39%;
-    --primary-foreground: 210 40% 98%;
+    /* Cores principais da marca */
+    --primary: 178 100% 41%; /* #00D2C7 */
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 185 92% 22%; /* #006F75 */
+    --secondary-foreground: 180 100% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 185 92% 96%;
+    --muted-foreground: 185 20% 46%;
 
-    --accent: 188 66% 84%;
-    --accent-foreground: 188 90% 15%;
+    --accent: 178 95% 85%; /* Tom claro do turquesa para hover */
+    --accent-foreground: 192 100% 15%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 188 79% 39%;
+    --border: 178 30% 90%;
+    --input: 178 30% 90%;
+    --ring: 178 100% 41%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 188 81% 20%;
+    /* Cores específicas do sidebar usando a paleta da marca */
+    --sidebar-background: 185 92% 22%; /* #006F75 */
     --sidebar-foreground: 180 100% 95%;
-    --sidebar-primary: 188 79% 39%;
+    --sidebar-primary: 178 100% 41%; /* #00D2C7 */
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 188 69% 25%;
+    --sidebar-accent: 185 100% 17%; /* #005357 */
     --sidebar-accent-foreground: 180 100% 95%;
-    --sidebar-border: 188 69% 25%;
-    --sidebar-ring: 188 79% 39%;
+    --sidebar-border: 185 100% 17%;
+    --sidebar-ring: 178 100% 41%;
+
+    /* Variações da marca para diferentes usos */
+    --brand-light: 178 100% 85%; /* Versão clara do turquesa */
+    --brand-medium: 178 100% 65%; /* Versão média do turquesa */
+    --brand-dark: 185 100% 17%; /* #005357 */
+    --brand-darker: 192 100% 3%; /* #0C0C0C */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 192 100% 3%; /* #0C0C0C */
+    --foreground: 180 100% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 185 100% 8%;
+    --card-foreground: 180 100% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 185 100% 8%;
+    --popover-foreground: 180 100% 95%;
 
-    --primary: 188 79% 39%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 178 100% 41%; /* #00D2C7 */
+    --primary-foreground: 192 100% 3%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 185 100% 17%; /* #005357 */
+    --secondary-foreground: 180 100% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 185 100% 10%;
+    --muted-foreground: 185 30% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 185 100% 15%;
+    --accent-foreground: 180 100% 95%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 185 100% 15%;
+    --input: 185 100% 15%;
+    --ring: 178 100% 41%;
 
-    --sidebar-background: 188 81% 20%;
+    --sidebar-background: 185 100% 17%; /* #005357 */
     --sidebar-foreground: 180 100% 95%;
-    --sidebar-primary: 188 79% 39%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 188 69% 25%;
+    --sidebar-primary: 178 100% 41%; /* #00D2C7 */
+    --sidebar-primary-foreground: 192 100% 3%;
+    --sidebar-accent: 185 92% 22%; /* #006F75 */
     --sidebar-accent-foreground: 180 100% 95%;
-    --sidebar-border: 188 69% 25%;
-    --sidebar-ring: 188 79% 39%;
+    --sidebar-border: 185 92% 22%;
+    --sidebar-ring: 178 100% 41%;
   }
 }
 
@@ -91,20 +99,44 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
 }
 
 @layer components {
   .gradient-bg {
-    @apply bg-gradient-to-br from-talento-50 to-talento-100;
+    @apply bg-gradient-to-br from-primary to-brand-dark;
+  }
+  
+  .gradient-brand {
+    background: linear-gradient(135deg, #00D2C7 0%, #005357 100%);
   }
   
   .hover-scale {
-    @apply transition-transform duration-200 hover:scale-[1.02];
+    @apply transition-all duration-300 hover:scale-[1.02];
   }
   
   .car-card-shadow {
-    @apply shadow-md hover:shadow-xl transition-shadow duration-300;
+    @apply shadow-lg hover:shadow-xl transition-all duration-300 border border-brand-light/20;
+  }
+  
+  .brand-text-primary {
+    @apply text-primary;
+  }
+  
+  .brand-text-secondary {
+    @apply text-secondary;
+  }
+  
+  .brand-bg-primary {
+    @apply bg-primary;
+  }
+  
+  .brand-bg-secondary {
+    @apply bg-secondary;
+  }
+  
+  .brand-hover {
+    @apply hover:bg-brand-light hover:text-brand-darker transition-colors duration-200;
   }
 }

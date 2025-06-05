@@ -47,7 +47,7 @@ export function VehicleCard({
 
   return (
     <Link to={`/vehicle/${id}`}>
-      <Card className="group car-card-shadow hover-scale cursor-pointer overflow-hidden">
+      <Card className="group car-card-shadow hover-scale cursor-pointer overflow-hidden bg-white dark:bg-brand-darker border-brand-300 dark:border-brand-700">
         <div className="relative">
           <img 
             src={image} 
@@ -58,7 +58,7 @@ export function VehicleCard({
             <Button
               size="sm"
               variant="ghost"
-              className="w-8 h-8 p-0 bg-white/90 hover:bg-white"
+              className="w-8 h-8 p-0 bg-white/95 hover:bg-brand-50 backdrop-blur-sm border border-brand-200"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -66,29 +66,29 @@ export function VehicleCard({
               }}
             >
               <Heart 
-                className={`w-4 h-4 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-600'}`} 
+                className={`w-4 h-4 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-brand-600'}`} 
               />
             </Button>
           </div>
           <div className="absolute top-3 left-3">
-            <Badge variant="secondary" className="bg-white/90 text-gray-800">
+            <Badge variant="secondary" className="bg-white/95 text-brand-700 border-brand-200 backdrop-blur-sm">
               {year}
             </Badge>
           </div>
         </div>
         
-        <CardContent className="p-4">
-          <div className="space-y-3">
+        <CardContent className="p-5">
+          <div className="space-y-4">
             <div>
-              <h3 className="font-semibold text-lg text-gray-900 line-clamp-1">
+              <h3 className="font-semibold text-lg text-brand-darker dark:text-brand-50 line-clamp-1 mb-1">
                 {name}
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-brand-600 dark:text-brand-300">
                 {brand} {model}
               </p>
             </div>
             
-            <div className="flex items-center gap-4 text-xs text-gray-500">
+            <div className="flex items-center gap-4 text-xs text-brand-500 dark:text-brand-400">
               <div className="flex items-center gap-1">
                 <Fuel className="w-3 h-3" />
                 <span>{fuel}</span>
@@ -103,18 +103,18 @@ export function VehicleCard({
               </div>
             </div>
             
-            <div className="flex items-center gap-1 text-xs text-gray-500">
+            <div className="flex items-center gap-1 text-xs text-brand-500 dark:text-brand-400">
               <MapPin className="w-3 h-3" />
               <span>{location}</span>
             </div>
             
-            <div className="flex items-center justify-between pt-2">
-              <div className="text-2xl font-bold text-primary">
+            <div className="flex items-center justify-between pt-3 border-t border-brand-100 dark:border-brand-800">
+              <div className="text-2xl font-bold text-brand-primary">
                 {formatPrice(price)}
               </div>
               <Button 
                 size="sm" 
-                className="bg-primary hover:bg-primary/90"
+                className="bg-brand-primary hover:bg-brand-600 text-white border-0 shadow-md hover:shadow-lg transition-all duration-200"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
