@@ -59,7 +59,7 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
                 <SelectValue placeholder="Marca" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Todas as marcas</SelectItem>
+                <SelectItem value="all">Todas as marcas</SelectItem>
                 {brands.map((brand) => (
                   <SelectItem key={brand} value={brand.toLowerCase()}>
                     {brand}
@@ -73,7 +73,7 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
                 <SelectValue placeholder="Faixa de preço" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Qualquer preço</SelectItem>
+                <SelectItem value="all">Qualquer preço</SelectItem>
                 {priceRanges.map((range) => (
                   <SelectItem key={range.value} value={range.value}>
                     {range.label}
@@ -87,7 +87,7 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
                 <SelectValue placeholder="Ano" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Qualquer ano</SelectItem>
+                <SelectItem value="all">Qualquer ano</SelectItem>
                 <SelectItem value="2024">2024</SelectItem>
                 <SelectItem value="2023">2023</SelectItem>
                 <SelectItem value="2022">2022</SelectItem>
@@ -102,7 +102,7 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
                 <SelectValue placeholder="Combustível" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Qualquer combustível</SelectItem>
+                <SelectItem value="all">Qualquer combustível</SelectItem>
                 <SelectItem value="flex">Flex</SelectItem>
                 <SelectItem value="gasolina">Gasolina</SelectItem>
                 <SelectItem value="etanol">Etanol</SelectItem>
@@ -117,7 +117,7 @@ export function VehicleFilters({ filters, onFiltersChange, onClearFilters }: Veh
                 <SelectValue placeholder="Câmbio" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Qualquer câmbio</SelectItem>
+                <SelectItem value="all">Qualquer câmbio</SelectItem>
                 <SelectItem value="manual">Manual</SelectItem>
                 <SelectItem value="automatico">Automático</SelectItem>
                 <SelectItem value="cvt">CVT</SelectItem>
