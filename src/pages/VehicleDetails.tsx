@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
@@ -20,11 +19,13 @@ import {
   Star
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from 'react-router-dom';
 
 const VehicleDetails = () => {
   const { toast } = useToast();
   const [currentImage, setCurrentImage] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
+  const navigate = useNavigate();
 
   const vehicle = {
     id: "3",
@@ -90,17 +91,20 @@ const VehicleDetails = () => {
     });
   };
 
+  const handleSimulateFinancing = () => {
+    navigate(`/simulate-financing?name=${encodeURIComponent(vehicle.name)}&value=${vehicle.price}&image=${encodeURIComponent(vehicle.images[currentImage])}`);
+  };
+
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-gray-50">
         <AppSidebar />
         <main className="flex-1">
-          {/* Header */}
           <div className="bg-white border-b border-gray-200 px-6 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <SidebarTrigger />
-                <Button variant="ghost" size="sm">
+                <Button variant="ghost" size="sm" onClick={() => window.history.back()}>
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Voltar
                 </Button>
@@ -243,27 +247,6 @@ const VehicleDetails = () => {
                         Preço à vista
                       </Badge>
                     </div>
-                    
-                    <div className="space-y-3">
-                      <Button 
-                        className="w-full bg-primary hover:bg-primary/90" 
-                        size="lg"
-                        onClick={handleScheduleVisit}
-                      >
-                        <Calendar className="w-4 h-4 mr-2" />
-                        Agendar Visita
-                      </Button>
-                      
-                      <Button 
-                        variant="outline" 
-                        className="w-full" 
-                        size="lg"
-                        onClick={handleContact}
-                      >
-                        <Phone className="w-4 h-4 mr-2" />
-                        Entrar em Contato
-                      </Button>
-                    </div>
                   </CardContent>
                 </Card>
 
@@ -292,28 +275,6 @@ const VehicleDetails = () => {
                         <Phone className="w-4 h-4" />
                         <span>{vehicle.seller.phone}</span>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Financing */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Financiamento</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Entrada (30%):</span>
-                        <span className="font-semibold">{formatPrice(vehicle.price * 0.3)}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">60x de:</span>
-                        <span className="font-semibold">{formatPrice((vehicle.price * 0.7) / 60)}</span>
-                      </div>
-                      <Button variant="outline" size="sm" className="w-full mt-3">
-                        Simular Financiamento
-                      </Button>
                     </div>
                   </CardContent>
                 </Card>

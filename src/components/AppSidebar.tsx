@@ -1,4 +1,3 @@
-
 import {
   Car,
   Home,
@@ -8,7 +7,8 @@ import {
   Settings,
   PlusCircle,
   BarChart3,
-  Shield
+  Shield,
+  ShoppingBag
 } from "lucide-react";
 import {
   Sidebar,
@@ -23,11 +23,27 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-const userMenuItems = [
+const mainMenuItems = [
   {
     title: "Início",
-    url: "/",
     icon: Home,
+    url: "/",
+  },
+  {
+    title: "Meus Interesses",
+    icon: Heart,
+    url: "/my-interests",
+    subItems: [
+      {
+        title: "Minhas Compras",
+        url: "/my-purchases",
+      },
+    ],
+  },
+  {
+    title: "Minhas Vendas",
+    icon: Car,
+    url: "/my-sales",
   },
   {
     title: "Veículos",
@@ -48,6 +64,11 @@ const userMenuItems = [
     title: "Vender Carro",
     url: "/sell",
     icon: PlusCircle,
+  },
+  {
+    title: "Perfil",
+    url: "/profile",
+    icon: Users,
   },
 ];
 
@@ -72,6 +93,16 @@ const adminMenuItems = [
     url: "/admin/appointments",
     icon: Calendar,
   },
+  {
+    title: "Vendas",
+    url: "/admin/sales",
+    icon: ShoppingBag,
+  },
+  {
+    title: "Dashboard de Vendas",
+    url: "/admin/sales-dashboard",
+    icon: BarChart3,
+  },
 ];
 
 interface AppSidebarProps {
@@ -79,7 +110,7 @@ interface AppSidebarProps {
 }
 
 export function AppSidebar({ isAdmin = false }: AppSidebarProps) {
-  const menuItems = isAdmin ? adminMenuItems : userMenuItems;
+  const menuItems = isAdmin ? adminMenuItems : mainMenuItems;
 
   return (
     <Sidebar className="border-r border-sidebar-border bg-sidebar">
@@ -141,7 +172,7 @@ export function AppSidebar({ isAdmin = false }: AppSidebarProps) {
       </SidebarContent>
       
       <SidebarFooter className="border-t border-sidebar-border p-4 bg-sidebar-accent/50">
-        <div className="flex items-center gap-3">
+        <a href="/profile" className="flex items-center gap-3">
           <div className="w-10 h-10 bg-brand-secondary/20 rounded-full flex items-center justify-center border border-brand-secondary/30">
             {isAdmin ? <Shield className="w-5 h-5 text-brand-secondary" /> : <Users className="w-5 h-5 text-brand-secondary" />}
           </div>
@@ -153,7 +184,7 @@ export function AppSidebar({ isAdmin = false }: AppSidebarProps) {
               {isAdmin ? "admin@talento.com" : "user@example.com"}
             </p>
           </div>
-        </div>
+        </a>
       </SidebarFooter>
     </Sidebar>
   );
