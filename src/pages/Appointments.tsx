@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Button } from "@/components/ui/button";
@@ -6,42 +6,85 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, MapPin, Car, ArrowLeft, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { AppointmentDetails } from "@/components/AppointmentDetails";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
+
+interface Appointment {
+  id: string;
+  type: "VENDA" | "COMPRA";
+  status: "AGENDADO" | "CONCLUIDO" | "CANCELADO";
+  date: Date;
+  time: string;
+  customer: {
+    name: string;
+    email: string;
+    phone: string;
+  };
+  vehicle?: {
+    brand: string;
+    model: string;
+    year: string;
+    version: string;
+    plate: string;
+  };
+}
 
 const Appointments = () => {
   const { toast } = useToast();
+  const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null);
 
-  const mockAppointments = [
+  const mockAppointments: Appointment[] = [
     {
       id: "1",
-      vehicleName: "Tucson GL 2.0 Aut.",
-      vehicleBrand: "Hyundai",
-      date: "2024-06-10",
+      type: "VENDA",
+      status: "AGENDADO",
+      date: new Date(2024, 3, 15),
       time: "14:00",
-      status: "confirmado",
-      location: "Rua das Flores, 123 - São Paulo, SP",
-      sellerPhone: "(11) 99999-9999"
+      customer: {
+        name: "João Silva",
+        email: "joao.silva@email.com",
+        phone: "(11) 98765-4321"
+      },
+      vehicle: {
+        brand: "Volkswagen",
+        model: "Golf",
+        year: "2020",
+        version: "2.0 TSI",
+        plate: "ABC1D23"
+      }
     },
     {
       id: "2",
-      vehicleName: "Uno Vivace 1.0",
-      vehicleBrand: "Fiat",
-      date: "2024-06-12",
-      time: "10:30",
-      status: "pendente",
-      location: "Av. Paulista, 456 - São Paulo, SP",
-      sellerPhone: "(11) 88888-8888"
+      type: "COMPRA",
+      status: "AGENDADO",
+      date: new Date(2024, 3, 16),
+      time: "10:00",
+      customer: {
+        name: "Maria Santos",
+        email: "maria.santos@email.com",
+        phone: "(11) 91234-5678"
+      }
     }
   ];
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case "confirmado":
-        return <Badge className="bg-green-100 text-green-800">Confirmado</Badge>;
-      case "pendente":
-        return <Badge className="bg-yellow-100 text-yellow-800">Pendente</Badge>;
+      case "AGENDADO":
+        return <Badge className="bg-blue-100 text-blue-800">Agendado</Badge>;
+      case "CONCLUIDO":
+        return <Badge className="bg-green-100 text-green-800">Concluído</Badge>;
+      case "CANCELADO":
+        return <Badge className="bg-red-100 text-red-800">Cancelado</Badge>;
       default:
         return <Badge variant="secondary">{status}</Badge>;
     }
+  };
+
+  const getTypeBadge = (type: string) => {
+    return type === "VENDA" 
+      ? <Badge className="bg-purple-100 text-purple-800">Venda</Badge>
+      : <Badge className="bg-orange-100 text-orange-800">Compra</Badge>;
   };
 
   const handleContact = (phone: string) => {
@@ -84,14 +127,25 @@ const Appointments = () => {
 
                 <div className="space-y-4">
                   {mockAppointments.map((appointment) => (
-                    <Card key={appointment.id}>
+                    <Card 
+                      key={appointment.id}
+                      className="cursor-pointer hover:shadow-lg transition-shadow"
+                      onClick={() => setSelectedAppointment(appointment)}
+                    >
                       <CardHeader>
                         <div className="flex items-center justify-between">
-                          <CardTitle className="flex items-center gap-2">
+                          <div className="flex items-center gap-2">
                             <Car className="w-5 h-5 text-primary" />
-                            {appointment.vehicleName}
-                          </CardTitle>
-                          {getStatusBadge(appointment.status)}
+                            <CardTitle>
+                              {appointment.type === "VENDA" 
+                                ? `${appointment.vehicle?.brand} ${appointment.vehicle?.model}`
+                                : "Compra de Veículo"}
+                            </CardTitle>
+                          </div>
+                          <div className="flex gap-2">
+                            {getTypeBadge(appointment.type)}
+                            {getStatusBadge(appointment.status)}
+                          </div>
                         </div>
                       </CardHeader>
                       <CardContent>
@@ -99,7 +153,7 @@ const Appointments = () => {
                           <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4 text-gray-500" />
                             <span className="text-sm">
-                              {new Date(appointment.date).toLocaleDateString('pt-BR')}
+                              {format(appointment.date, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                             </span>
                           </div>
                           <div className="flex items-center gap-2">
@@ -108,13 +162,16 @@ const Appointments = () => {
                           </div>
                           <div className="flex items-center gap-2">
                             <MapPin className="w-4 h-4 text-gray-500" />
-                            <span className="text-sm">{appointment.location}</span>
+                            <span className="text-sm">Av. Paulista, 1000 - São Paulo</span>
                           </div>
                           <div className="flex gap-2">
                             <Button 
                               variant="outline" 
                               size="sm"
-                              onClick={() => handleContact(appointment.sellerPhone)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleContact(appointment.customer.phone);
+                              }}
                             >
                               <Phone className="w-4 h-4 mr-1" />
                               Contato
@@ -137,6 +194,14 @@ const Appointments = () => {
               </div>
             )}
           </div>
+
+          {/* Modal de Detalhes */}
+          {selectedAppointment && (
+            <AppointmentDetails
+              appointment={selectedAppointment}
+              onClose={() => setSelectedAppointment(null)}
+            />
+          )}
         </main>
       </div>
     </SidebarProvider>

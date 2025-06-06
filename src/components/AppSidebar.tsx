@@ -22,28 +22,13 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { useNavigate } from "react-router-dom";
 
-const mainMenuItems = [
+const userMenuItems = [
   {
     title: "Início",
-    icon: Home,
     url: "/",
-  },
-  {
-    title: "Meus Interesses",
-    icon: Heart,
-    url: "/my-interests",
-    subItems: [
-      {
-        title: "Minhas Compras",
-        url: "/my-purchases",
-      },
-    ],
-  },
-  {
-    title: "Minhas Vendas",
-    icon: Car,
-    url: "/my-sales",
+    icon: Home,
   },
   {
     title: "Veículos",
@@ -61,37 +46,9 @@ const mainMenuItems = [
     icon: Calendar,
   },
   {
-    title: "Vender Carro",
+    title: "Inserir Carro",
     url: "/sell",
     icon: PlusCircle,
-  },
-  {
-    title: "Perfil",
-    url: "/profile",
-    icon: Users,
-  },
-];
-
-const adminMenuItems = [
-  {
-    title: "Dashboard",
-    url: "/admin",
-    icon: BarChart3,
-  },
-  {
-    title: "Gerenciar Veículos",
-    url: "/admin/vehicles",
-    icon: Car,
-  },
-  {
-    title: "Usuários",
-    url: "/admin/users",
-    icon: Users,
-  },
-  {
-    title: "Agendamentos",
-    url: "/admin/appointments",
-    icon: Calendar,
   },
   {
     title: "Vendas",
@@ -103,14 +60,20 @@ const adminMenuItems = [
     url: "/admin/sales-dashboard",
     icon: BarChart3,
   },
+  {
+    title: "Gerenciar Veículos",
+    url: "/admin/vehicles",
+    icon: Car,
+  },
+  {
+    title: "Vender Meu Carro",
+    url: "/schedule-evaluation",
+    icon: Car,
+  },
 ];
 
-interface AppSidebarProps {
-  isAdmin?: boolean;
-}
-
-export function AppSidebar({ isAdmin = false }: AppSidebarProps) {
-  const menuItems = isAdmin ? adminMenuItems : mainMenuItems;
+export function AppSidebar() {
+  const navigate = useNavigate();
 
   return (
     <Sidebar className="border-r border-sidebar-border bg-sidebar">
@@ -129,11 +92,11 @@ export function AppSidebar({ isAdmin = false }: AppSidebarProps) {
       <SidebarContent className="bg-sidebar">
         <SidebarGroup>
           <SidebarGroupLabel className="text-sidebar-foreground/80 px-4 py-3 text-xs font-semibold uppercase tracking-wider">
-            {isAdmin ? "Administração" : "Menu Principal"}
+            Menu Principal
           </SidebarGroupLabel>
           <SidebarGroupContent className="px-2">
             <SidebarMenu>
-              {menuItems.map((item) => (
+              {userMenuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton 
                     asChild 
@@ -149,42 +112,25 @@ export function AppSidebar({ isAdmin = false }: AppSidebarProps) {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-        
-        {isAdmin && (
-          <SidebarGroup>
-            <SidebarGroupLabel className="text-sidebar-foreground/80 px-4 py-3 text-xs font-semibold uppercase tracking-wider">
-              Sistema
-            </SidebarGroupLabel>
-            <SidebarGroupContent className="px-2">
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all duration-200 rounded-lg mx-1 group">
-                    <a href="/admin/settings" className="flex items-center gap-3 px-4 py-3 rounded-lg">
-                      <Settings className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
-                      <span className="font-medium">Configurações</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        )}
       </SidebarContent>
       
       <SidebarFooter className="border-t border-sidebar-border p-4 bg-sidebar-accent/50">
-        <a href="/profile" className="flex items-center gap-3">
+        <button 
+          onClick={() => navigate('/profile')}
+          className="w-full flex items-center gap-3 hover:bg-sidebar-accent/80 transition-all duration-200 rounded-lg p-2 group"
+        >
           <div className="w-10 h-10 bg-brand-secondary/20 rounded-full flex items-center justify-center border border-brand-secondary/30">
-            {isAdmin ? <Shield className="w-5 h-5 text-brand-secondary" /> : <Users className="w-5 h-5 text-brand-secondary" />}
+            <Users className="w-5 h-5 text-brand-secondary" />
           </div>
-          <div>
+          <div className="text-left">
             <p className="text-sm font-semibold text-sidebar-foreground">
-              {isAdmin ? "Administrador" : "Usuário"}
+              Meu Perfil
             </p>
             <p className="text-xs text-sidebar-foreground/70">
-              {isAdmin ? "admin@talento.com" : "user@example.com"}
+              user@example.com
             </p>
           </div>
-        </a>
+        </button>
       </SidebarFooter>
     </Sidebar>
   );

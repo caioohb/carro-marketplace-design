@@ -9,6 +9,7 @@ import Favorites from "./pages/Favorites";
 import Appointments from "./pages/Appointments";
 import SellCar from "./pages/SellCar";
 import NotFound from "./pages/NotFound";
+import ScheduleVehicleEvaluation from "./pages/ScheduleVehicleEvaluation"
 import Profile from "./pages/Profile";
 import SimulateFinancing from "./pages/SimulateFinancing";
 import MyInterests from "./pages/MyInterests";
@@ -16,6 +17,7 @@ import MySales from "./pages/MySales";
 import MyPurchases from "./pages/MyPurchases";
 import AdminSales from "@/pages/AdminSales";
 import AdminSalesDashboard from "@/pages/AdminSalesDashboard";
+import AdminVehicles from "@/pages/AdminVehicles"; // Nova importação
 
 const queryClient = new QueryClient();
 
@@ -39,6 +41,8 @@ const App = () => (
           <Route path="/my-purchases" element={<MyPurchases />} />
           <Route path="/admin/sales" element={<AdminSales />} />
           <Route path="/admin/sales-dashboard" element={<AdminSalesDashboard />} />
+          <Route path="/admin/vehicles" element={<AdminVehicles />} />
+          <Route path="/schedule-evaluation" element={<ScheduleVehicleEvaluation />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

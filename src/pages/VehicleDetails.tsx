@@ -19,13 +19,17 @@ import {
   Star
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const VehicleDetails = () => {
   const { toast } = useToast();
   const [currentImage, setCurrentImage] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Verifica se está vindo da página de interesses
+  const isFromInterests = location.pathname === '/vehicle/1';
 
   const vehicle = {
     id: "3",
@@ -247,6 +251,25 @@ const VehicleDetails = () => {
                         Preço à vista
                       </Badge>
                     </div>
+                    
+                    {!isFromInterests && (
+                      <div className="space-y-3">
+                        <Button 
+                          className="w-full" 
+                          onClick={handleScheduleVisit}
+                        >
+                          <Calendar className="w-4 h-4 mr-2" />
+                          Agendar Visita
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          className="w-full"
+                          onClick={handleSimulateFinancing}
+                        >
+                          Simular Financiamento
+                        </Button>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
 
