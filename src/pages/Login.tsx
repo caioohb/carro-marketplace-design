@@ -6,10 +6,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Car } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({ login: '', password: '' });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -21,18 +23,14 @@ const Login = () => {
         title: "Login realizado com sucesso!",
         description: "Bem-vindo, Administrador",
       });
-      // Simular sessão admin
-      localStorage.setItem('userType', 'admin');
-      localStorage.setItem('userEmail', 'admin@talentoveiculos.com.br');
+      login('admin@talentoveiculos.com.br', 'admin');
       navigate('/');
     } else if (formData.login === 'user' && formData.password === '1234567890') {
       toast({
         title: "Login realizado com sucesso!",
         description: "Bem-vindo, Usuário",
       });
-      // Simular sessão user
-      localStorage.setItem('userType', 'user');
-      localStorage.setItem('userEmail', 'user@talentoveiculos.com.br');
+      login('user@talentoveiculos.com.br', 'user');
       navigate('/');
     } else {
       toast({

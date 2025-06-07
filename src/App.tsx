@@ -5,6 +5,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { Layout } from "@/components/Layout";
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
 import VehicleDetails from "./pages/VehicleDetails";
@@ -36,33 +38,111 @@ const queryClient = new QueryClient({
 const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <Router>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/vehicles" element={<Index />} />
-            <Route path="/vehicle/:id" element={<VehicleDetails />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/appointments" element={<Appointments />} />
-            <Route path="/sell" element={<SellCar />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/simulate-financing" element={<SimulateFinancing />} />
-            <Route path="/interests" element={<MyInterests />} />
-            <Route path="/my-sales" element={<MySales />} />
-            <Route path="/my-purchases" element={<MyPurchases />} />
-            <Route path="/admin/sales" element={<AdminSales />} />
-            <Route path="/admin/sales-dashboard" element={<AdminSalesDashboard />} />
-            <Route path="/admin/vehicles" element={<AdminVehicles />} />
-            <Route path="/schedule-evaluation" element={<ScheduleVehicleEvaluation />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Router>
-      </TooltipProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <Router>
+            <Routes>
+              {/* Páginas públicas sem sidebar */}
+              <Route path="/" element={
+                <Layout showSidebar={false}>
+                  <Landing />
+                </Layout>
+              } />
+              <Route path="/vehicles" element={
+                <Layout showSidebar={false}>
+                  <Index />
+                </Layout>
+              } />
+              <Route path="/schedule-evaluation" element={
+                <Layout showSidebar={false}>
+                  <ScheduleVehicleEvaluation />
+                </Layout>
+              } />
+              <Route path="/login" element={
+                <Layout showSidebar={false}>
+                  <Login />
+                </Layout>
+              } />
+              <Route path="/register" element={
+                <Layout showSidebar={false}>
+                  <Register />
+                </Layout>
+              } />
+              
+              {/* Páginas que podem ter sidebar se autenticado */}
+              <Route path="/vehicle/:id" element={
+                <Layout>
+                  <VehicleDetails />
+                </Layout>
+              } />
+              <Route path="/favorites" element={
+                <Layout>
+                  <Favorites />
+                </Layout>
+              } />
+              <Route path="/appointments" element={
+                <Layout>
+                  <Appointments />
+                </Layout>
+              } />
+              <Route path="/sell" element={
+                <Layout>
+                  <SellCar />
+                </Layout>
+              } />
+              <Route path="/profile" element={
+                <Layout>
+                  <Profile />
+                </Layout>
+              } />
+              <Route path="/simulate-financing" element={
+                <Layout>
+                  <SimulateFinancing />
+                </Layout>
+              } />
+              <Route path="/interests" element={
+                <Layout>
+                  <MyInterests />
+                </Layout>
+              } />
+              <Route path="/my-sales" element={
+                <Layout>
+                  <MySales />
+                </Layout>
+              } />
+              <Route path="/my-purchases" element={
+                <Layout>
+                  <MyPurchases />
+                </Layout>
+              } />
+              <Route path="/admin/sales" element={
+                <Layout>
+                  <AdminSales />
+                </Layout>
+              } />
+              <Route path="/admin/sales-dashboard" element={
+                <Layout>
+                  <AdminSalesDashboard />
+                </Layout>
+              } />
+              <Route path="/admin/vehicles" element={
+                <Layout>
+                  <AdminVehicles />
+                </Layout>
+              } />
+              
+              {/* Página de erro */}
+              <Route path="*" element={
+                <Layout showSidebar={false}>
+                  <NotFound />
+                </Layout>
+              } />
+            </Routes>
+          </Router>
+        </TooltipProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 };

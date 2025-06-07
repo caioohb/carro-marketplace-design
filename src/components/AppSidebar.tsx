@@ -1,3 +1,4 @@
+
 import {
   Car,
   Home,
@@ -8,7 +9,8 @@ import {
   PlusCircle,
   BarChart3,
   Shield,
-  ShoppingBag
+  ShoppingBag,
+  LogOut
 } from "lucide-react";
 import {
   Sidebar,
@@ -23,6 +25,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 const userMenuItems = [
   {
@@ -84,6 +87,12 @@ const userMenuItems = [
 
 export function AppSidebar() {
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   return (
     <Sidebar className="border-r border-sidebar-border bg-sidebar">
@@ -127,7 +136,7 @@ export function AppSidebar() {
       <SidebarFooter className="border-t border-sidebar-border p-4 bg-sidebar-accent/50">
         <button 
           onClick={() => navigate('/profile')}
-          className="w-full flex items-center gap-3 hover:bg-sidebar-accent/80 transition-all duration-200 rounded-lg p-2 group"
+          className="w-full flex items-center gap-3 hover:bg-sidebar-accent/80 transition-all duration-200 rounded-lg p-2 group mb-2"
         >
           <div className="w-10 h-10 bg-brand-secondary/20 rounded-full flex items-center justify-center border border-brand-secondary/30">
             <Users className="w-5 h-5 text-brand-secondary" />
@@ -137,9 +146,17 @@ export function AppSidebar() {
               Meu Perfil
             </p>
             <p className="text-xs text-sidebar-foreground/70">
-              user@example.com
+              {user?.email || 'user@example.com'}
             </p>
           </div>
+        </button>
+        
+        <button 
+          onClick={handleLogout}
+          className="w-full flex items-center gap-3 hover:bg-red-100 hover:text-red-700 transition-all duration-200 rounded-lg p-2 group"
+        >
+          <LogOut className="w-5 h-5" />
+          <span className="text-sm font-medium">Sair</span>
         </button>
       </SidebarFooter>
     </Sidebar>
