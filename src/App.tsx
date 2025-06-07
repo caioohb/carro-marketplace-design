@@ -55,11 +55,6 @@ const App: React.FC = () => {
                   <Index />
                 </Layout>
               } />
-              <Route path="/schedule-evaluation" element={
-                <Layout showSidebar={false}>
-                  <ScheduleVehicleEvaluation />
-                </Layout>
-              } />
               <Route path="/login" element={
                 <Layout showSidebar={false}>
                   <Login />
@@ -72,6 +67,11 @@ const App: React.FC = () => {
               } />
               
               {/* Páginas que podem ter sidebar se autenticado */}
+              <Route path="/schedule-evaluation" element={
+                <Layout>
+                  <ScheduleVehicleEvaluation />
+                </Layout>
+              } />
               <Route path="/vehicle/:id" element={
                 <Layout>
                   <VehicleDetails />

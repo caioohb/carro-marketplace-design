@@ -27,6 +27,39 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 
+const adminMenuItems = [
+  {
+    title: "Início",
+    url: "/",
+    icon: Home,
+  },
+  {
+    title: "Veículos",
+    url: "/vehicles",
+    icon: Car,
+  },
+  {
+    title: "Agendamentos",
+    url: "/appointments",
+    icon: Calendar,
+  },
+  {
+    title: "Vendas",
+    url: "/admin/sales",
+    icon: ShoppingBag,
+  },
+  {
+    title: "Dashboard de Vendas",
+    url: "/admin/sales-dashboard",
+    icon: BarChart3,
+  },
+  {
+    title: "Gerenciar Veículos",
+    url: "/admin/vehicles",
+    icon: Car,
+  },
+];
+
 const userMenuItems = [
   {
     title: "Início",
@@ -64,21 +97,6 @@ const userMenuItems = [
     icon: PlusCircle,
   },
   {
-    title: "Vendas",
-    url: "/admin/sales",
-    icon: ShoppingBag,
-  },
-  {
-    title: "Dashboard de Vendas",
-    url: "/admin/sales-dashboard",
-    icon: BarChart3,
-  },
-  {
-    title: "Gerenciar Veículos",
-    url: "/admin/vehicles",
-    icon: Car,
-  },
-  {
     title: "Vender Meu Carro",
     url: "/schedule-evaluation",
     icon: Car,
@@ -93,6 +111,9 @@ export function AppSidebar() {
     logout();
     navigate('/');
   };
+
+  // Determine which menu items to show based on user type
+  const menuItems = user?.type === 'admin' ? adminMenuItems : userMenuItems;
 
   return (
     <Sidebar className="border-r border-sidebar-border bg-sidebar">
@@ -111,11 +132,11 @@ export function AppSidebar() {
       <SidebarContent className="bg-sidebar">
         <SidebarGroup>
           <SidebarGroupLabel className="text-sidebar-foreground/80 px-4 py-3 text-xs font-semibold uppercase tracking-wider">
-            Menu Principal
+            {user?.type === 'admin' ? 'Administração' : 'Menu Principal'}
           </SidebarGroupLabel>
           <SidebarGroupContent className="px-2">
             <SidebarMenu>
-              {userMenuItems.map((item) => (
+              {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton 
                     asChild 
@@ -143,7 +164,7 @@ export function AppSidebar() {
           </div>
           <div className="text-left">
             <p className="text-sm font-semibold text-sidebar-foreground">
-              Meu Perfil
+              {user?.type === 'admin' ? 'Administrador' : 'Meu Perfil'}
             </p>
             <p className="text-xs text-sidebar-foreground/70">
               {user?.email || 'user@example.com'}

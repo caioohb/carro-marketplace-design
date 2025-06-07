@@ -1,5 +1,5 @@
 
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -19,6 +19,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) 
         <div className="min-h-screen flex w-full">
           <AppSidebar />
           <main className="flex-1">
+            <div className="p-2 border-b border-gray-200 bg-white md:hidden">
+              <SidebarTrigger />
+            </div>
             {children}
           </main>
         </div>
