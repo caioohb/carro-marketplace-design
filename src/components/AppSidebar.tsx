@@ -41,6 +41,16 @@ const userMenuItems = [
     icon: Heart,
   },
   {
+    title: "Meus Interesses",
+    url: "/interests",
+    icon: Heart,
+  },
+  {
+    title: "Minhas Vendas",
+    url: "/my-sales",
+    icon: ShoppingBag,
+  },
+  {
     title: "Agendamentos",
     url: "/appointments",
     icon: Calendar,
