@@ -1,12 +1,11 @@
 
 import { useState } from "react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/AppSidebar";
 import { VehicleCard } from "@/components/VehicleCard";
 import { VehicleFilters } from "@/components/VehicleFilters";
 import { Button } from "@/components/ui/button";
 import { LayoutGrid, List, Plus } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 interface FilterState {
   search: string;
@@ -94,6 +93,7 @@ const mockVehicles = [
 
 const Index = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [favorites, setFavorites] = useState<string[]>([]);
   const [filters, setFilters] = useState<FilterState>({
@@ -137,91 +137,86 @@ const Index = () => {
   };
 
   return (
-    <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gray-50">
-        <AppSidebar />
-        <main className="flex-1">
-          {/* Header */}
-          <div className="bg-white border-b border-gray-200 px-6 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <SidebarTrigger />
-                <div>
-                  <h1 className="text-2xl font-bold text-gray-900">Veículos Disponíveis</h1>
-                  <p className="text-gray-600">Encontre o carro dos seus sonhos</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <div className="flex items-center border border-gray-200 rounded-lg p-1">
-                  <Button
-                    variant={viewMode === 'grid' ? 'default' : 'ghost'}
-                    size="sm"
-                    onClick={() => setViewMode('grid')}
-                    className="h-8"
-                  >
-                    <LayoutGrid className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    variant={viewMode === 'list' ? 'default' : 'ghost'}
-                    size="sm"
-                    onClick={() => setViewMode('list')}
-                    className="h-8"
-                  >
-                    <List className="w-4 h-4" />
-                  </Button>
-                </div>
-                
-                <Button className="bg-primary hover:bg-primary/90">
-                  <Plus className="w-4 h-4 mr-2" />
-                  Vender Meu Carro
-                </Button>
-              </div>
-            </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white border-b border-gray-200 px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">Veículos Disponíveis</h1>
+            <p className="text-gray-600">Encontre o carro dos seus sonhos</p>
           </div>
-
-          {/* Content */}
-          <div className="p-6">
-            <VehicleFilters 
-              filters={filters}
-              onFiltersChange={setFilters}
-              onClearFilters={clearFilters}
-            />
-
-            {/* Results count */}
-            <div className="mb-6">
-              <p className="text-gray-600">
-                <span className="font-semibold text-gray-900">{mockVehicles.length}</span> veículos encontrados
-              </p>
-            </div>
-
-            {/* Vehicle grid */}
-            <div className={
-              viewMode === 'grid' 
-                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" 
-                : "space-y-4"
-            }>
-              {mockVehicles.map((vehicle) => (
-                <VehicleCard
-                  key={vehicle.id}
-                  {...vehicle}
-                  isFavorite={favorites.includes(vehicle.id)}
-                  onFavorite={handleFavorite}
-                  onScheduleVisit={handleScheduleVisit}
-                />
-              ))}
-            </div>
-
-            {/* Load more button */}
-            <div className="mt-8 text-center">
-              <Button variant="outline" size="lg">
-                Carregar mais veículos
+          
+          <div className="flex items-center gap-3">
+            <div className="flex items-center border border-gray-200 rounded-lg p-1">
+              <Button
+                variant={viewMode === 'grid' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => setViewMode('grid')}
+                className="h-8"
+              >
+                <LayoutGrid className="w-4 h-4" />
+              </Button>
+              <Button
+                variant={viewMode === 'list' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => setViewMode('list')}
+                className="h-8"
+              >
+                <List className="w-4 h-4" />
               </Button>
             </div>
+            
+            <Button 
+              className="bg-primary hover:bg-primary/90"
+              onClick={() => navigate('/schedule-evaluation')}
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Vender Meu Carro
+            </Button>
           </div>
-        </main>
+        </div>
       </div>
-    </SidebarProvider>
+
+      {/* Content */}
+      <div className="p-6">
+        <VehicleFilters 
+          filters={filters}
+          onFiltersChange={setFilters}
+          onClearFilters={clearFilters}
+        />
+
+        {/* Results count */}
+        <div className="mb-6">
+          <p className="text-gray-600">
+            <span className="font-semibold text-gray-900">{mockVehicles.length}</span> veículos encontrados
+          </p>
+        </div>
+
+        {/* Vehicle grid */}
+        <div className={
+          viewMode === 'grid' 
+            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" 
+            : "space-y-4"
+        }>
+          {mockVehicles.map((vehicle) => (
+            <VehicleCard
+              key={vehicle.id}
+              {...vehicle}
+              isFavorite={favorites.includes(vehicle.id)}
+              onFavorite={handleFavorite}
+              onScheduleVisit={handleScheduleVisit}
+            />
+          ))}
+        </div>
+
+        {/* Load more button */}
+        <div className="mt-8 text-center">
+          <Button variant="outline" size="lg">
+            Carregar mais veículos
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 };
 

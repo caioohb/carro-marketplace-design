@@ -22,7 +22,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) 
             <div className="p-2 border-b border-gray-200 bg-white md:hidden">
               <SidebarTrigger />
             </div>
-            {children}
+            <div className="p-6">
+              {children}
+            </div>
           </main>
         </div>
       </SidebarProvider>

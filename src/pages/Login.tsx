@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -24,14 +23,14 @@ const Login = () => {
         description: "Bem-vindo, Administrador",
       });
       login('admin@talentoveiculos.com.br', 'admin');
-      navigate('/');
+      navigate('/admin/sales-dashboard'); // Redireciona admin para dashboard
     } else if (formData.login === 'user' && formData.password === '1234567890') {
       toast({
         title: "Login realizado com sucesso!",
         description: "Bem-vindo, Usuário",
       });
       login('user@talentoveiculos.com.br', 'user');
-      navigate('/');
+      navigate('/favorites'); // Redireciona usuário para favorites
     } else {
       toast({
         title: "Erro no login",

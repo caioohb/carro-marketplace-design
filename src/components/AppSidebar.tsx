@@ -112,6 +112,10 @@ export function AppSidebar() {
     navigate('/');
   };
 
+  const handleNavigation = (url: string) => {
+    navigate(url);
+  };
+
   // Determine which menu items to show based on user type
   const menuItems = user?.type === 'admin' ? adminMenuItems : userMenuItems;
 
@@ -139,13 +143,13 @@ export function AppSidebar() {
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton 
-                    asChild 
                     className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all duration-200 rounded-lg mx-1 group"
+                    onClick={() => handleNavigation(item.url)}
                   >
-                    <a href={item.url} className="flex items-center gap-3 px-4 py-3 rounded-lg">
+                    <div className="flex items-center gap-3 px-4 py-3 rounded-lg">
                       <item.icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
                       <span className="font-medium">{item.title}</span>
-                    </a>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
