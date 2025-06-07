@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -6,7 +5,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
-import { Layout } from "@/components/Layout";
+import PublicLayout from "@/components/layouts/PublicLayout";
+import { PrivateLayout } from "@/components/layouts/PrivateLayout";
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
 import VehicleDetails from "./pages/VehicleDetails";
@@ -44,100 +44,100 @@ const App: React.FC = () => {
           <Sonner />
           <Router>
             <Routes>
-              {/* Páginas públicas sem sidebar */}
+              {/* Páginas públicas */}
               <Route path="/" element={
-                <Layout showSidebar={false}>
+                <PublicLayout>
                   <Landing />
-                </Layout>
+                </PublicLayout>
               } />
               <Route path="/vehicles" element={
-                <Layout showSidebar={false}>
+                <PublicLayout>
                   <Index />
-                </Layout>
+                </PublicLayout>
               } />
               <Route path="/login" element={
-                <Layout showSidebar={false}>
+                <PublicLayout>
                   <Login />
-                </Layout>
+                </PublicLayout>
               } />
               <Route path="/register" element={
-                <Layout showSidebar={false}>
+                <PublicLayout>
                   <Register />
-                </Layout>
+                </PublicLayout>
               } />
-              
-              {/* Páginas que podem ter sidebar se autenticado */}
               <Route path="/schedule-evaluation" element={
-                <Layout>
+                <PublicLayout>
                   <ScheduleVehicleEvaluation />
-                </Layout>
+                </PublicLayout>
               } />
               <Route path="/vehicle/:id" element={
-                <Layout>
+                <PublicLayout>
                   <VehicleDetails />
-                </Layout>
-              } />
-              <Route path="/favorites" element={
-                <Layout>
-                  <Favorites />
-                </Layout>
-              } />
-              <Route path="/appointments" element={
-                <Layout>
-                  <Appointments />
-                </Layout>
-              } />
-              <Route path="/sell" element={
-                <Layout>
-                  <SellCar />
-                </Layout>
-              } />
-              <Route path="/profile" element={
-                <Layout>
-                  <Profile />
-                </Layout>
+                </PublicLayout>
               } />
               <Route path="/simulate-financing" element={
-                <Layout>
+                <PublicLayout>
                   <SimulateFinancing />
-                </Layout>
+                </PublicLayout>
+              } />
+              
+              {/* Páginas privadas */}
+              <Route path="/favorites" element={
+                <PrivateLayout>
+                  <Favorites />
+                </PrivateLayout>
+              } />
+              <Route path="/appointments" element={
+                <PrivateLayout>
+                  <Appointments />
+                </PrivateLayout>
+              } />
+              <Route path="/sell" element={
+                <PrivateLayout>
+                  <SellCar />
+                </PrivateLayout>
+              } />
+              <Route path="/profile" element={
+                <PrivateLayout>
+                  <Profile />
+                </PrivateLayout>
               } />
               <Route path="/interests" element={
-                <Layout>
+                <PrivateLayout>
                   <MyInterests />
-                </Layout>
+                </PrivateLayout>
               } />
               <Route path="/my-sales" element={
-                <Layout>
+                <PrivateLayout>
                   <MySales />
-                </Layout>
+                </PrivateLayout>
               } />
               <Route path="/my-purchases" element={
-                <Layout>
+                <PrivateLayout>
                   <MyPurchases />
-                </Layout>
+                </PrivateLayout>
               } />
               <Route path="/admin/sales" element={
-                <Layout>
+                <PrivateLayout>
                   <AdminSales />
-                </Layout>
+                </PrivateLayout>
               } />
               <Route path="/admin/sales-dashboard" element={
-                <Layout>
+                <PrivateLayout>
                   <AdminSalesDashboard />
-                </Layout>
+                </PrivateLayout>
               } />
               <Route path="/admin/vehicles" element={
-                <Layout>
+                <PrivateLayout>
                   <AdminVehicles />
-                </Layout>
+                </PrivateLayout>
               } />
               
               {/* Página de erro */}
               <Route path="*" element={
-                <Layout showSidebar={false}>
+                <PublicLayout>
                   <NotFound />
-                </Layout>
+                </PublicLayout>
               } />
             </Routes>
           </Router>

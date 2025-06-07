@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/AppSidebar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -100,213 +98,166 @@ const VehicleDetails = () => {
   };
 
   return (
-    <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gray-50">
-        <AppSidebar />
-        <main className="flex-1">
-          <div className="bg-white border-b border-gray-200 px-6 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <SidebarTrigger />
-                <Button variant="ghost" size="sm" onClick={() => window.history.back()}>
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Voltar
-                </Button>
-                <div>
-                  <h1 className="text-2xl font-bold text-gray-900">{vehicle.name}</h1>
-                  <p className="text-gray-600">{vehicle.brand} • {vehicle.year}</p>
+    <div className="p-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Images and details */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Image gallery */}
+          <Card>
+            <CardContent className="p-0">
+              <div className="relative">
+                <img 
+                  src={vehicle.images[currentImage]} 
+                  alt={vehicle.name}
+                  className="w-full h-96 object-cover rounded-t-lg"
+                />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="flex gap-2 overflow-x-auto pb-2">
+                    {vehicle.images.map((image, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImage(index)}
+                        className={`flex-shrink-0 w-16 h-12 rounded-md overflow-hidden border-2 ${
+                          index === currentImage ? 'border-primary' : 'border-white'
+                        }`}
+                      >
+                        <img 
+                          src={image} 
+                          alt={`Foto ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Vehicle specifications */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Especificações do Veículo</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="text-center p-4 bg-gray-50 rounded-lg">
+                  <Car className="w-6 h-6 mx-auto mb-2 text-primary" />
+                  <p className="text-sm text-gray-600">Quilometragem</p>
+                  <p className="font-semibold">{vehicle.quilometragem.toLocaleString()} km</p>
+                </div>
+                <div className="text-center p-4 bg-gray-50 rounded-lg">
+                  <Fuel className="w-6 h-6 mx-auto mb-2 text-primary" />
+                  <p className="text-sm text-gray-600">Combustível</p>
+                  <p className="font-semibold">{vehicle.fuel}</p>
+                </div>
+                <div className="text-center p-4 bg-gray-50 rounded-lg">
+                  <Settings2 className="w-6 h-6 mx-auto mb-2 text-primary" />
+                  <p className="text-sm text-gray-600">Transmissão</p>
+                  <p className="font-semibold">{vehicle.transmission}</p>
+                </div>
+                <div className="text-center p-4 bg-gray-50 rounded-lg">
+                  <Users className="w-6 h-6 mx-auto mb-2 text-primary" />
+                  <p className="text-sm text-gray-600">Lugares</p>
+                  <p className="font-semibold">{vehicle.seats} lugares</p>
                 </div>
               </div>
               
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" onClick={handleFavorite}>
-                  <Heart className={`w-4 h-4 mr-2 ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
-                  {isFavorite ? 'Favoritado' : 'Favoritar'}
+              <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <p className="text-gray-600">Cor</p>
+                  <p className="font-semibold">{vehicle.color}</p>
+                </div>
+                <div>
+                  <p className="text-gray-600">Portas</p>
+                  <p className="font-semibold">{vehicle.doors} portas</p>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <h3 className="font-semibold mb-2">Itens de Série</h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {vehicle.features.map((feature, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Description */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Descrição</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 whitespace-pre-line">{vehicle.description}</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Sidebar */}
+        <div className="space-y-6">
+          {/* Price card */}
+          <Card>
+            <CardContent className="p-6">
+              <div className="text-center">
+                <p className="text-2xl font-bold text-primary">{formatPrice(vehicle.price)}</p>
+                <p className="text-sm text-gray-600 mt-1">Preço à vista</p>
+              </div>
+
+              <div className="mt-6 space-y-4">
+                <Button className="w-full" onClick={handleScheduleVisit}>
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Agendar Visita
                 </Button>
-                <Button variant="outline" size="sm">
-                  <Share2 className="w-4 h-4 mr-2" />
-                  Compartilhar
+                <Button variant="outline" className="w-full" onClick={handleContact}>
+                  <Phone className="w-4 h-4 mr-2" />
+                  Falar com Vendedor
+                </Button>
+                <Button variant="outline" className="w-full" onClick={handleSimulateFinancing}>
+                  Simular Financiamento
                 </Button>
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
-          <div className="p-6">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* Images and details */}
-              <div className="lg:col-span-2 space-y-6">
-                {/* Image gallery */}
-                <Card>
-                  <CardContent className="p-0">
-                    <div className="relative">
-                      <img 
-                        src={vehicle.images[currentImage]} 
-                        alt={vehicle.name}
-                        className="w-full h-96 object-cover rounded-t-lg"
-                      />
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <div className="flex gap-2 overflow-x-auto pb-2">
-                          {vehicle.images.map((image, index) => (
-                            <button
-                              key={index}
-                              onClick={() => setCurrentImage(index)}
-                              className={`flex-shrink-0 w-16 h-12 rounded-md overflow-hidden border-2 ${
-                                index === currentImage ? 'border-primary' : 'border-white'
-                              }`}
-                            >
-                              <img 
-                                src={image} 
-                                alt={`Foto ${index + 1}`}
-                                className="w-full h-full object-cover"
-                              />
-                            </button>
-                          ))}
-                        </div>
-                      </div>
+          {/* Seller info */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Informações do Vendedor</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-semibold">{vehicle.seller.name}</p>
+                    <div className="flex items-center gap-1">
+                      <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                      <span className="text-sm">{vehicle.seller.rating}</span>
                     </div>
-                  </CardContent>
-                </Card>
-
-                {/* Vehicle specifications */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Especificações do Veículo</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <div className="text-center p-4 bg-gray-50 rounded-lg">
-                        <Car className="w-6 h-6 mx-auto mb-2 text-primary" />
-                        <p className="text-sm text-gray-600">Quilometragem</p>
-                        <p className="font-semibold">{vehicle.quilometragem.toLocaleString()} km</p>
-                      </div>
-                      <div className="text-center p-4 bg-gray-50 rounded-lg">
-                        <Fuel className="w-6 h-6 mx-auto mb-2 text-primary" />
-                        <p className="text-sm text-gray-600">Combustível</p>
-                        <p className="font-semibold">{vehicle.fuel}</p>
-                      </div>
-                      <div className="text-center p-4 bg-gray-50 rounded-lg">
-                        <Settings2 className="w-6 h-6 mx-auto mb-2 text-primary" />
-                        <p className="text-sm text-gray-600">Transmissão</p>
-                        <p className="font-semibold">{vehicle.transmission}</p>
-                      </div>
-                      <div className="text-center p-4 bg-gray-50 rounded-lg">
-                        <Users className="w-6 h-6 mx-auto mb-2 text-primary" />
-                        <p className="text-sm text-gray-600">Lugares</p>
-                        <p className="font-semibold">{vehicle.seats} lugares</p>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
-                      <div>
-                        <span className="text-gray-600">Cor:</span>
-                        <span className="ml-2 font-medium">{vehicle.color}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-600">Portas:</span>
-                        <span className="ml-2 font-medium">{vehicle.doors} portas</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Features */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Opcionais</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-2 gap-2">
-                      {vehicle.features.map((feature, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500" />
-                          <span className="text-sm">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Description */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Descrição</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700 leading-relaxed">
-                      {vehicle.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                  <Badge variant="secondary">Concessionária</Badge>
+                </div>
+                
+                <div className="flex items-center gap-2 text-sm">
+                  <MapPin className="w-4 h-4 text-gray-500" />
+                  <span>{vehicle.seller.location}</span>
+                </div>
+                
+                <div className="flex items-center gap-2 text-sm">
+                  <Phone className="w-4 h-4 text-gray-500" />
+                  <span>{vehicle.seller.phone}</span>
+                </div>
               </div>
-
-              {/* Sidebar with price and actions */}
-              <div className="space-y-6">
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="text-center mb-6">
-                      <div className="text-3xl font-bold text-primary mb-2">
-                        {formatPrice(vehicle.price)}
-                      </div>
-                      <Badge variant="secondary" className="text-xs">
-                        Preço à vista
-                      </Badge>
-                    </div>
-                    
-                    {!isFromInterests && (
-                      <div className="space-y-3">
-                        <Button 
-                          className="w-full" 
-                          onClick={handleScheduleVisit}
-                        >
-                          <Calendar className="w-4 h-4 mr-2" />
-                          Agendar Visita
-                        </Button>
-                        <Button 
-                          variant="outline" 
-                          className="w-full"
-                          onClick={handleSimulateFinancing}
-                        >
-                          Simular Financiamento
-                        </Button>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-
-                {/* Seller info */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Vendedor</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <div>
-                        <h4 className="font-semibold">{vehicle.seller.name}</h4>
-                        <div className="flex items-center gap-1 mt-1">
-                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          <span className="text-sm">{vehicle.seller.rating}</span>
-                          <span className="text-xs text-gray-500">(124 avaliações)</span>
-                        </div>
-                      </div>
-                      
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <MapPin className="w-4 h-4" />
-                        <span>{vehicle.seller.location}</span>
-                      </div>
-                      
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <Phone className="w-4 h-4" />
-                        <span>{vehicle.seller.phone}</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </main>
+            </CardContent>
+          </Card>
+        </div>
       </div>
-    </SidebarProvider>
+    </div>
   );
 };
 
