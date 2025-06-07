@@ -14,17 +14,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 192 100% 3%;
 
-    /* Cores principais da marca */
-    --primary: 185 100% 17%; /* #005357 */
+    /* Cores oficiais da marca conforme especificação */
+    --primary: 185 100% 17%; /* #005357 - Destaque */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 178 100% 41%; /* #00D2C7 */
+    --secondary: 178 100% 41%; /* #00D2C7 - Primária */
     --secondary-foreground: 185 100% 17%;
 
     --muted: 185 92% 96%;
     --muted-foreground: 185 20% 46%;
 
-    --accent: 185 100% 25%; /* Tom mais claro do #005357 */
+    --accent: 185 100% 25%; 
     --accent-foreground: 180 100% 95%;
 
     --destructive: 0 84% 60%;
@@ -41,16 +41,16 @@
     --sidebar-foreground: 180 100% 95%;
     --sidebar-primary: 178 100% 41%; /* #00D2C7 */
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 185 100% 20%; /* Tom ligeiramente mais claro do #005357 */
+    --sidebar-accent: 185 100% 20%; 
     --sidebar-accent-foreground: 180 100% 95%;
     --sidebar-border: 185 100% 20%;
     --sidebar-ring: 185 100% 17%;
 
-    /* Variações da marca para diferentes usos */
-    --brand-light: 178 100% 85%; /* Versão clara do turquesa */
-    --brand-medium: 178 100% 65%; /* Versão média do turquesa */
-    --brand-dark: 185 100% 17%; /* #005357 */
-    --brand-darker: 192 100% 3%; /* #0C0C0C */
+    /* Cores específicas da marca conforme especificação */
+    --brand-primary: 178 100% 41%;    /* #00D2C7 - Primária */
+    --brand-secondary: 185 100% 23%;  /* #006F75 - Secundária */
+    --brand-accent: 185 100% 17%;     /* #005357 - Destaque */
+    --brand-dark: 192 100% 3%;        /* #0C0C0C - Fundo escuro */
   }
 
   .dark {
@@ -90,6 +90,11 @@
     --sidebar-accent-foreground: 180 100% 95%;
     --sidebar-border: 185 100% 20%;
     --sidebar-ring: 185 100% 17%;
+
+    --brand-primary: 178 100% 41%;    /* #00D2C7 */
+    --brand-secondary: 185 100% 23%;  /* #006F75 */
+    --brand-accent: 185 100% 17%;     /* #005357 */
+    --brand-dark: 192 100% 3%;        /* #0C0C0C */
   }
 }
 
@@ -109,7 +114,7 @@
   }
   
   .car-card-shadow {
-    @apply shadow-lg hover:shadow-xl transition-all duration-300 border border-brand-light/20;
+    @apply shadow-lg hover:shadow-xl transition-all duration-300 border border-brand-primary/20;
   }
   
   .brand-text-primary {
@@ -129,6 +134,6 @@
   }
   
   .brand-hover {
-    @apply hover:bg-brand-light hover:text-brand-darker transition-colors duration-200;
+    @apply hover:bg-brand-primary hover:text-white transition-colors duration-200;
   }
 }

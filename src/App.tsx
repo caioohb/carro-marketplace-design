@@ -1,8 +1,10 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing";
 import Index from "./pages/Index";
 import VehicleDetails from "./pages/VehicleDetails";
 import Favorites from "./pages/Favorites";
@@ -17,7 +19,9 @@ import MySales from "./pages/MySales";
 import MyPurchases from "./pages/MyPurchases";
 import AdminSales from "@/pages/AdminSales";
 import AdminSalesDashboard from "@/pages/AdminSalesDashboard";
-import AdminVehicles from "@/pages/AdminVehicles"; // Nova importação
+import AdminVehicles from "@/pages/AdminVehicles";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const queryClient = new QueryClient();
 
@@ -28,7 +32,7 @@ const App = () => (
       <Sonner />
       <Router>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/vehicles" element={<Index />} />
           <Route path="/vehicle/:id" element={<VehicleDetails />} />
           <Route path="/favorites" element={<Favorites />} />
@@ -43,6 +47,8 @@ const App = () => (
           <Route path="/admin/sales-dashboard" element={<AdminSalesDashboard />} />
           <Route path="/admin/vehicles" element={<AdminVehicles />} />
           <Route path="/schedule-evaluation" element={<ScheduleVehicleEvaluation />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

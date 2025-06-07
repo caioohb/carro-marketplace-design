@@ -63,25 +63,23 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Cores específicas da marca TALENTO
+				// Cores específicas da marca TALENTO conforme especificação
 				brand: {
-					primary: '#005357',    // Cor predominante
-					secondary: '#00D2C7',  // Turquesa claro
-					light: '#66E5DF',      // Tom claro do turquesa
-					medium: '#33DBD4',     // Tom médio do turquesa
-					dark: '#005357',       // Cor predominante
-					darker: '#0C0C0C',     // Quase preto
+					primary: '#00D2C7',      // Primária
+					secondary: '#006F75',    // Secundária  
+					accent: '#005357',       // Destaque
+					dark: '#0C0C0C',         // Fundo escuro
 					50: '#f0fdfc',
 					100: '#ccfbf1',
 					200: '#99f6e4',
 					300: '#5eead4',
 					400: '#2dd4bf',
-					500: '#005357',       // Cor predominante
-					600: '#004a4d',       // Tom mais escuro
-					700: '#003d40',       // Tom ainda mais escuro
+					500: '#00D2C7',          // Primária
+					600: '#006F75',          // Secundária
+					700: '#005357',          // Destaque
 					800: '#134e4a',
 					900: '#0c2d30',
-					950: '#0C0C0C',       // Fundo escuro
+					950: '#0C0C0C',          // Fundo escuro
 				}
 			},
 			fontFamily: {
