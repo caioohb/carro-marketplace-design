@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import { PanelLeft } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -7,6 +8,9 @@ import { Sheet, SheetContent } from "@/components/ui/sheet"
 // Re-export context and menu components
 export { SidebarProvider, useSidebar } from "./sidebar/SidebarContext"
 export { SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "./sidebar/SidebarMenu"
+
+// Import useSidebar for use in this file
+import { useSidebar } from "./sidebar/SidebarContext"
 
 const Sidebar = React.forwardRef<
   HTMLDivElement,
