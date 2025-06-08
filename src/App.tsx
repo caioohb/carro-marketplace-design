@@ -23,8 +23,10 @@ import MyPurchases from "./pages/MyPurchases";
 import AdminSales from "@/pages/AdminSales";
 import AdminSalesDashboard from "@/pages/AdminSalesDashboard";
 import AdminVehicles from "@/pages/AdminVehicles";
+import Financial from "@/pages/admin/Financial";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Payroll from "./pages/admin/Payroll";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -130,6 +132,16 @@ const App: React.FC = () => {
               <Route path="/admin/vehicles" element={
                 <PrivateLayout>
                   <AdminVehicles />
+                </PrivateLayout>
+              } />
+              <Route path="/admin/financial" element={
+                <PrivateLayout>
+                  <Financial />
+                </PrivateLayout>
+              } />
+              <Route path="/admin/payroll" element={
+                <PrivateLayout>
+                  <Payroll />
                 </PrivateLayout>
               } />
               

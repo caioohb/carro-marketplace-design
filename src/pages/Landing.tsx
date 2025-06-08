@@ -27,49 +27,7 @@ const Landing = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header com NavBar fixa */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-        <nav className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center">
-                <Car className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-xl font-bold text-brand-primary">WHITE</h2>
-                <p className="text-xs text-muted-foreground">Veículos Premium</p>
-              </div>
-            </div>
-            
-            <div className="hidden md:flex items-center gap-6">
-              <button onClick={() => scrollToSection('comprar')} className="text-foreground hover:text-brand-primary transition-colors">
-                Comprar
-              </button>
-              <button onClick={() => scrollToSection('vender')} className="text-foreground hover:text-brand-primary transition-colors">
-                Vender
-              </button>
-              <button onClick={() => scrollToSection('sobre')} className="text-foreground hover:text-brand-primary transition-colors">
-                Sobre
-              </button>
-              <button onClick={() => scrollToSection('programas')} className="text-foreground hover:text-brand-primary transition-colors">
-                Programas
-              </button>
-              <button onClick={() => scrollToSection('contato')} className="text-foreground hover:text-brand-primary transition-colors">
-                Contato
-              </button>
-              <button onClick={() => scrollToSection('faq')} className="text-foreground hover:text-brand-primary transition-colors">
-                FAQ
-              </button>
-              <button onClick={() => scrollToSection('unidade')} className="text-foreground hover:text-brand-primary transition-colors">
-                Unidade
-              </button>
-            </div>
-
-            <Button onClick={() => navigate('/login')} variant="outline">
-              Login
-            </Button>
-          </div>
-        </nav>
-      </header>
+      
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-secondary to-brand-primary pt-20">
@@ -93,7 +51,7 @@ const Landing = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-brand-primary text-lg px-8 py-6"
+              className="bg-white text-brand-primary hover:bg-white/90 text-lg px-8 py-6"
               onClick={() => navigate('/schedule-evaluation')}
             >
               <Award className="w-5 h-5 mr-2" />

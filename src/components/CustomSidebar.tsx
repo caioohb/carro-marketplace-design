@@ -1,6 +1,5 @@
-
-import { Car, Heart, Calendar, Users, Settings, PlusCircle, BarChart3, ShoppingBag, LogOut, ChevronLeft, ChevronRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Car, Heart, Calendar, Users, Settings, PlusCircle, BarChart3, ShoppingBag, LogOut, ChevronLeft, ChevronRight, DollarSign, Receipt } from "lucide-react";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { useSidebarState } from "@/hooks/useSidebarState";
@@ -11,6 +10,8 @@ const adminMenuItems = [
   { title: "Dashboard de Vendas", url: "/admin/sales-dashboard", icon: BarChart3 },
   { title: "Inserir Carro", url: "/sell", icon: PlusCircle },
   { title: "Gerenciar Veículos", url: "/admin/vehicles", icon: Car },
+  { title: "Controle Financeiro", url: "/admin/financial", icon: DollarSign },
+  { title: "Folha de Pagamento", url: "/admin/payroll", icon: Receipt },
 ];
 
 const userMenuItems = [
