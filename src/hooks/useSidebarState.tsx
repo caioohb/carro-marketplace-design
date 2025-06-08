@@ -21,17 +21,20 @@ export const SidebarStateProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const toggleSidebar = () => {
+    console.log('Toggling sidebar from:', isExpanded, 'to:', !isExpanded);
     const newState = !isExpanded;
     setIsExpanded(newState);
     localStorage.setItem('sidebar-expanded', JSON.stringify(newState));
   };
 
   const expandSidebar = () => {
+    console.log('Expanding sidebar');
     setIsExpanded(true);
     localStorage.setItem('sidebar-expanded', 'true');
   };
 
   const collapseSidebar = () => {
+    console.log('Collapsing sidebar');
     setIsExpanded(false);
     localStorage.setItem('sidebar-expanded', 'false');
   };
