@@ -49,7 +49,7 @@ const AdminVehicles = () => {
       year: 2007,
       price: 34990,
       status: "pending",
-      seller: "Talento Veículos",
+      seller: "WHITE Veículos",
       createdAt: "2024-03-15",
       image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&h=600&fit=crop"
     },

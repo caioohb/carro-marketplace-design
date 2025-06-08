@@ -25,7 +25,7 @@ const FAQSection = () => {
     {
       question: "Vocês oferecem garantia nos veículos?",
       answer:
-        "Sim, todos os veículos comercializados pela Talento Veículos possuem garantia legal e adicional, conforme a legislação vigente. Além disso, realizamos uma vistoria completa antes da entrega.",
+        "Sim, todos os veículos comercializados pela WHITE Veículos possuem garantia legal e adicional, conforme a legislação vigente. Além disso, realizamos uma vistoria completa antes da entrega.",
     },
     {
       question: "Como posso agendar uma visita?",

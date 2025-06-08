@@ -152,26 +152,7 @@ const Index = () => {
           </div>
           
           
-          <div className="flex items-center gap-3">
-            <div className="flex items-center border border-gray-200 rounded-lg p-1">
-              <Button
-                variant={viewMode === 'grid' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => setViewMode('grid')}
-                className="h-8"
-              >
-                <LayoutGrid className="w-4 h-4" />
-              </Button>
-              <Button
-                variant={viewMode === 'list' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => setViewMode('list')}
-                className="h-8"
-              >
-                <List className="w-4 h-4" />
-              </Button>
-            </div>
-            
+          <div className="flex items-center gap-3">            
             <Button 
               className="bg-primary hover:bg-primary/90"
               onClick={() => navigate('/schedule-evaluation')}
@@ -182,31 +163,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-
-      {/* Featured Vehicles Section */}
-      <div className="bg-gray-50 py-8">
-        <div className="px-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Veículos em Destaque</h2>
-            <Button variant="ghost" size="sm" className="text-primary">
-              Ver todos
-            </Button>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {mockVehicles.slice(0, 4).map((vehicle) => (
-              <VehicleCard
-                key={vehicle.id}
-                {...vehicle}
-                isFavorite={favorites.includes(vehicle.id)}
-                onFavorite={handleFavorite}
-                onScheduleVisit={handleScheduleVisit}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Content */}
       <div className="p-6">
         <VehicleFilters 

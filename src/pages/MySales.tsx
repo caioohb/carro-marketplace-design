@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Car } from "lucide-react";
+import { ArrowLeft, Car, Heart } from "lucide-react";
 
 const MySales = () => {
   const sales = [
@@ -24,12 +24,15 @@ const MySales = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="h-8 w-8">
-            <ArrowLeft className="h-4 w-4" />
-          </Button>
-          <h1 className="text-2xl font-bold">Minhas Vendas</h1>
+      <div className="bg-white border-b border-gray-200 px-6 py-4">
+        <div className="flex items-center gap-3">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+              <Heart className="w-6 h-6 text-primary" />
+              Minhas Vendas
+            </h1>
+            <p className="text-gray-600">Carros que você vendeu</p>
+          </div>
         </div>
       </div>
 

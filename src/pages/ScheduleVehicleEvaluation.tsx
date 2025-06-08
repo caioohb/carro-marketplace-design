@@ -184,7 +184,7 @@ const ScheduleVehicleEvaluation = () => {
                 <div className="text-center mb-6">
                   <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">Agendamento Confirmado</h2>
-                  <p className="text-gray-600">Talento Veículos Premium</p>
+                  <p className="text-gray-600">WHITE Veículos Premium</p>
                 </div>
 
                 <div className="space-y-6">

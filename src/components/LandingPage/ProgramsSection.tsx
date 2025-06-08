@@ -7,7 +7,7 @@ const ProgramsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-[#005357] mb-4">
-            Programas Talento
+            Programas WHITE
           </h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
             Conheça nossos programas exclusivos e aproveite benefícios especiais
@@ -15,14 +15,14 @@ const ProgramsSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Talento Extreme */}
+          {/* WHITE Extreme */}
           <Card className="border-2 border-[#00D2C7]/20 hover:border-[#00D2C7] transition-colors">
             <CardContent className="p-8">
               <div className="w-16 h-16 bg-gradient-to-br from-[#00D2C7] to-[#005357] rounded-xl flex items-center justify-center mb-6">
                 <Star className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-[#005357] mb-4">
-                Talento Extreme
+                WHITE Extreme
               </h3>
               <p className="text-gray-600 mb-6">
                 Indique amigos e ganhe comissões por cada venda realizada através de suas indicações.
@@ -45,14 +45,14 @@ const ProgramsSection = () => {
             </CardContent>
           </Card>
 
-          {/* Talento VIP */}
+          {/* WHITE VIP */}
           <Card className="border-2 border-[#00D2C7]/20 hover:border-[#00D2C7] transition-colors">
             <CardContent className="p-8">
               <div className="w-16 h-16 bg-gradient-to-br from-[#00D2C7] to-[#005357] rounded-xl flex items-center justify-center mb-6">
                 <Crown className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-[#005357] mb-4">
-                Talento VIP
+                WHITE VIP
               </h3>
               <p className="text-gray-600 mb-6">
                 Acesso a benefícios exclusivos em manutenção, reparos e serviços automotivos.

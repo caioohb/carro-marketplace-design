@@ -49,7 +49,7 @@ const LocationSection = () => {
               </h3>
               <div className="space-y-4">
                 <a
-                  href="https://maps.google.com/?q=Talento+Veículos+Brasília"
+                  href="https://maps.google.com/?q=WHITE+Veículos+Brasília"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block"

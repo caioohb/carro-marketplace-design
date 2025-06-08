@@ -53,7 +53,7 @@ const Register = () => {
             CRIAR CONTA
           </CardTitle>
           <CardDescription>
-            Cadastre-se na Talento Veículos
+            Cadastre-se na WHITE Veículos
           </CardDescription>
         </CardHeader>
         <CardContent>

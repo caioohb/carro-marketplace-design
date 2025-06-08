@@ -53,7 +53,7 @@ export function CustomSidebar() {
             <div className={`min-w-0 flex-1 transition-all duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0 w-0'}`}>
               {isExpanded && (
                 <>
-                  <h2 className="text-lg font-bold text-white tracking-wide truncate">TALENTO</h2>
+                  <h2 className="text-lg font-bold text-white tracking-wide truncate">WHITE</h2>
                   <p className="text-xs text-white/80 font-medium truncate">Veículos Premium</p>
                 </>
               )}

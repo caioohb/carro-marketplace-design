@@ -12,7 +12,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-[#00D2C7] to-[#005357] rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-xl">T</span>
               </div>
-              <span className="text-2xl font-bold text-white">TALENTO</span>
+              <span className="text-2xl font-bold text-white">WHITE</span>
             </Link>
             <p className="text-gray-400">
               A melhor experiência em compra e venda de veículos premium.
@@ -66,7 +66,7 @@ const Footer = () => {
               <li>Lago Sul, Brasília - DF</li>
               <li>CEP: 71635-100</li>
               <li>Tel: (61) 99999-9999</li>
-              <li>Email: contato@talento.com.br</li>
+              <li>Email: contato@white.com.br</li>
             </ul>
           </div>
 
@@ -113,7 +113,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
           <p>
-            © {new Date().getFullYear()} Talento Veículos. Todos os direitos
+            © {new Date().getFullYear()} WHITE Veículos. Todos os direitos
             reservados.
           </p>
         </div>

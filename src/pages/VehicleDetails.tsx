@@ -57,7 +57,7 @@ const VehicleDetails = () => {
       "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&h=600&fit=crop"
     ],
     seller: {
-      name: "Talento Veículos",
+      name: "WHITE Veículos",
       rating: 4.8,
       location: "São Paulo, SP",
       phone: "(11) 99999-9999"

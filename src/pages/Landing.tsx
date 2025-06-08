@@ -35,7 +35,7 @@ const Landing = () => {
                 <Car className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-brand-primary">TALENTO</h2>
+                <h2 className="text-xl font-bold text-brand-primary">WHITE</h2>
                 <p className="text-xs text-muted-foreground">Veículos Premium</p>
               </div>
             </div>
@@ -76,7 +76,7 @@ const Landing = () => {
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative container mx-auto px-6 text-center text-white">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            TALENTO VEÍCULOS
+            WHITE VEÍCULOS
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
             A sua melhor opção para comprar e vender automóveis e motocicletas de alto padrão
@@ -103,18 +103,18 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Sobre a Talento Veículos */}
+      {/* Sobre a WHITE Veículos */}
       <section id="sobre" className="py-20 bg-background">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-brand-primary mb-4">
-              SOBRE A TALENTO VEÍCULOS
+              SOBRE A WHITE VEÍCULOS
             </h2>
             <h3 className="text-2xl font-semibold text-brand-secondary mb-6">
               AGÊNCIA DE COMPRA E VENDAS AUTOMOTIVAS
             </h3>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              A Talento Veículos é a sua melhor opção para comprar e vender automóveis e motocicletas.
+              A WHITE Veículos é a sua melhor opção para comprar e vender automóveis e motocicletas.
               Trabalhamos com veículos de alto padrão e modelos de entrada, sempre priorizando a qualidade
               e satisfação dos nossos clientes. Nossa expertise no mercado automotivo garante as melhores
               oportunidades e negociações justas para todos.
@@ -175,19 +175,19 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Programas Talento */}
+      {/* Programas WHITE */}
       <section id="programas" className="py-20 bg-background">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-brand-primary mb-4">
-              PROGRAMAS TALENTO
+              PROGRAMAS WHITE
             </h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card className="bg-gradient-to-br from-brand-secondary to-brand-primary text-white">
               <CardHeader>
-                <CardTitle className="text-2xl">Talento Extreme</CardTitle>
+                <CardTitle className="text-2xl">WHITE Extreme</CardTitle>
                 <CardDescription className="text-white/90">
                   Programa de Indicações
                 </CardDescription>
@@ -195,7 +195,7 @@ const Landing = () => {
               <CardContent>
                 <p className="text-white/90 mb-4">
                   Transforme suas indicações em renda! Ganhe comissões por cada cliente
-                  que você indicar para a Talento Veículos.
+                  que você indicar para a WHITE Veículos.
                 </p>
                 <ul className="list-disc list-inside text-white/90 space-y-2">
                   <li>Comissões atrativas por vendas concretizadas</li>
@@ -207,7 +207,7 @@ const Landing = () => {
 
             <Card className="bg-gradient-to-br from-brand-primary to-brand-secondary text-white">
               <CardHeader>
-                <CardTitle className="text-2xl">Talento VIP</CardTitle>
+                <CardTitle className="text-2xl">WHITE VIP</CardTitle>
                 <CardDescription className="text-white/90">
                   Parcerias Especiais
                 </CardDescription>
@@ -359,7 +359,7 @@ const Landing = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                onClick={() => window.open('https://maps.google.com/?q=Talento+Veículos+Brasília', '_blank')}
+                onClick={() => window.open('https://maps.google.com/?q=WHITE+Veículos+Brasília', '_blank')}
               >
                 <MapPin className="w-5 h-5 mr-2" />
                 Abrir no Google Maps
@@ -367,7 +367,7 @@ const Landing = () => {
               <Button 
                 size="lg" 
                 variant="outline"
-                onClick={() => window.open('https://waze.com/ul?q=Talento+Veículos+Brasília', '_blank')}
+                onClick={() => window.open('https://waze.com/ul?q=WHITE+Veículos+Brasília', '_blank')}
               >
                 <MapPin className="w-5 h-5 mr-2" />
                 Abrir no Waze
@@ -387,7 +387,7 @@ const Landing = () => {
                   <Car className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">TALENTO</h3>
+                  <h3 className="text-xl font-bold">WHITE</h3>
                   <p className="text-xs text-white/80">Veículos Premium</p>
                 </div>
               </div>
@@ -420,14 +420,14 @@ const Landing = () => {
               <h4 className="font-semibold mb-4">Contato</h4>
               <ul className="space-y-2 text-white/80">
                 <li>(61) 99999-9999</li>
-                <li>contato@talentoveiculos.com.br</li>
+                <li>contato@whiteveiculos.com.br</li>
                 <li>Brasília - DF</li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/80">
-            <p>&copy; 2024 Talento Veículos. Todos os direitos reservados.</p>
+            <p>&copy; 2024 WHITE Veículos. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>

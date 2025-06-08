@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Cores específicas da marca TALENTO conforme especificação
+				// Cores específicas da marca WHITE conforme especificação
 				brand: {
 					primary: '#00D2C7',      // Primária
 					secondary: '#006F75',    // Secundária  

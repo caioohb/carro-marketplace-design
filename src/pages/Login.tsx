@@ -22,14 +22,14 @@ const Login = () => {
         title: "Login realizado com sucesso!",
         description: "Bem-vindo, Administrador",
       });
-      login('admin@talentoveiculos.com.br', 'admin');
+      login('admin@whiteveiculos.com.br', 'admin');
       navigate('/admin/sales-dashboard'); // Redireciona admin para dashboard
     } else if (formData.login === 'user' && formData.password === '1234567890') {
       toast({
         title: "Login realizado com sucesso!",
         description: "Bem-vindo, Usuário",
       });
-      login('user@talentoveiculos.com.br', 'user');
+      login('user@whiteveiculos.com.br', 'user');
       navigate('/favorites'); // Redireciona usuário para favorites
     } else {
       toast({
@@ -48,7 +48,7 @@ const Login = () => {
             <Car className="w-8 h-8 text-white" />
           </div>
           <CardTitle className="text-2xl font-bold text-brand-primary">
-            TALENTO VEÍCULOS
+            WHITE VEÍCULOS
           </CardTitle>
           <CardDescription>
             Faça login para acessar sua conta

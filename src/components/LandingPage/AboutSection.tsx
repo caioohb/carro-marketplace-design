@@ -8,13 +8,13 @@ const AboutSection = () => {
         {/* Title */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-[#005357] mb-4">
-            SOBRE A TALENTO VEÍCULOS
+            SOBRE A WHITE VEÍCULOS
           </h2>
           <p className="text-xl text-[#006F75] mb-2">
             AGÊNCIA DE COMPRA E VENDAS AUTOMOTIVAS
           </p>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            A Talento Veículos é a sua melhor opção para comprar e vender automóveis e motocicletas.
+            A WHITE Veículos é a sua melhor opção para comprar e vender automóveis e motocicletas.
             Trabalhamos com veículos de alto padrão e modelos de entrada, sempre oferecendo a melhor
             experiência para nossos clientes.
           </p>

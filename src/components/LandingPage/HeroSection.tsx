@@ -20,7 +20,7 @@ const HeroSection = () => {
           Encontre o Carro dos Seus Sonhos
         </h1>
         <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-          A Talento Veículos oferece a melhor experiência em compra e venda de veículos premium
+          A WHITE Veículos oferece a melhor experiência em compra e venda de veículos premium
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/vehicles">

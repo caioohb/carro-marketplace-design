@@ -39,7 +39,7 @@ const Header = () => {
             <div className="w-10 h-10 bg-gradient-to-br from-[#00D2C7] to-[#005357] rounded-xl flex items-center justify-center">
               <span className="text-white font-bold text-xl">T</span>
             </div>
-            <span className="text-2xl font-bold text-[#005357]">TALENTO</span>
+            <span className="text-2xl font-bold text-[#005357]">WHITE</span>
           </Link>
 
           {/* Desktop Navigation */}
