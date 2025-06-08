@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { VehicleCard } from "@/components/VehicleCard";
 import { VehicleFilters } from "@/components/VehicleFilters";
 import { Button } from "@/components/ui/button";
-import { LayoutGrid, List, Plus } from "lucide-react";
+import { ArrowLeft, LayoutGrid, List, Plus } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -141,10 +140,17 @@ const Index = () => {
       {/* Header */}
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">Veículos Disponíveis</h1>
-            <p className="text-gray-600">Encontre o carro dos seus sonhos</p>
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="sm" onClick={() => window.history.back()}>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Voltar
+            </Button>
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">Veículos Disponíveis</h1>
+              <p className="text-gray-600">Encontre o carro dos seus sonhos</p>
+            </div>
           </div>
+          
           
           <div className="flex items-center gap-3">
             <div className="flex items-center border border-gray-200 rounded-lg p-1">
@@ -173,6 +179,30 @@ const Index = () => {
               <Plus className="w-4 h-4 mr-2" />
               Vender Meu Carro
             </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Vehicles Section */}
+      <div className="bg-gray-50 py-8">
+        <div className="px-6">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-semibold text-gray-900">Veículos em Destaque</h2>
+            <Button variant="ghost" size="sm" className="text-primary">
+              Ver todos
+            </Button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {mockVehicles.slice(0, 4).map((vehicle) => (
+              <VehicleCard
+                key={vehicle.id}
+                {...vehicle}
+                isFavorite={favorites.includes(vehicle.id)}
+                onFavorite={handleFavorite}
+                onScheduleVisit={handleScheduleVisit}
+              />
+            ))}
           </div>
         </div>
       </div>

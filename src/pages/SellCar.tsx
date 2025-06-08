@@ -46,17 +46,12 @@ const SellCar = () => {
         <main className="flex-1">
           <div className="bg-white border-b border-gray-200 px-6 py-4">
             <div className="flex items-center gap-3">
-              <SidebarTrigger />
-              <Button variant="ghost" size="sm" onClick={() => window.history.back()}>
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Voltar
-              </Button>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                   <Car className="w-6 h-6 text-primary" />
-                  Vender Meu Carro
+                  Anunciar Carro
                 </h1>
-                <p className="text-gray-600">Anuncie seu veículo na nossa plataforma</p>
+                <p className="text-gray-600">Anuncie o veículo na plataforma</p>
               </div>
             </div>
           </div>

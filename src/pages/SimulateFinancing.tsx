@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Calculator } from "lucide-react";
+import { Calculator, ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from 'react-router-dom';
 
@@ -50,6 +50,20 @@ const SimulateFinancing = () => {
 
   return (
     <div className="max-w-4xl mx-auto mt-8 p-8 bg-white rounded-xl shadow border border-gray-200">
+      <div className="bg-white border-b border-gray-200 px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="sm" onClick={() => window.history.back()}>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Voltar
+            </Button>
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">Detalhes do Financiamento</h1>
+              <p className="text-gray-600">Informações completas sobre o Financiamento</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="flex items-center gap-4 mb-6">
         <img src={vehicleImage} alt={vehicleName} className="w-24 h-24 object-cover rounded-lg" />
         <div>

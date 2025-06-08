@@ -99,6 +99,20 @@ const VehicleDetails = () => {
 
   return (
     <div className="p-6">
+       <div className="bg-white border-b border-gray-200 px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="sm" onClick={() => window.history.back()}>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Voltar
+            </Button>
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">Detalhes do Veículo</h1>
+              <p className="text-gray-600">Informações completas sobre o veículo</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Images and details */}
         <div className="lg:col-span-2 space-y-6">

@@ -9,7 +9,8 @@ import {
   BarChart3,
   Shield,
   ShoppingBag,
-  LogOut
+  LogOut,
+  ChevronLeft
 } from "lucide-react";
 import {
   Sidebar,
@@ -22,21 +23,14 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarTrigger,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 
 const adminMenuItems = [
-  {
-    title: "Início",
-    url: "/",
-    icon: Home,
-  },
-  {
-    title: "Veículos",
-    url: "/vehicles",
-    icon: Car,
-  },
   {
     title: "Agendamentos",
     url: "/appointments",
@@ -53,6 +47,11 @@ const adminMenuItems = [
     icon: BarChart3,
   },
   {
+    title: "Inserir Carro",
+    url: "/sell",
+    icon: PlusCircle,
+  },
+  {
     title: "Gerenciar Veículos",
     url: "/admin/vehicles",
     icon: Car,
@@ -60,16 +59,6 @@ const adminMenuItems = [
 ];
 
 const userMenuItems = [
-  {
-    title: "Início",
-    url: "/",
-    icon: Home,
-  },
-  {
-    title: "Veículos",
-    url: "/vehicles",
-    icon: Car,
-  },
   {
     title: "Favoritos",
     url: "/favorites",
@@ -85,26 +74,12 @@ const userMenuItems = [
     url: "/my-sales",
     icon: ShoppingBag,
   },
-  {
-    title: "Agendamentos",
-    url: "/appointments",
-    icon: Calendar,
-  },
-  {
-    title: "Inserir Carro",
-    url: "/sell",
-    icon: PlusCircle,
-  },
-  {
-    title: "Vender Meu Carro",
-    url: "/schedule-evaluation",
-    icon: Car,
-  },
 ];
 
 export function AppSidebar() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const { state, toggleSidebar } = useSidebar();
 
   const handleLogout = () => {
     logout();
@@ -119,35 +94,53 @@ export function AppSidebar() {
   const menuItems = user?.type === 'admin' ? adminMenuItems : userMenuItems;
 
   return (
-    <Sidebar className="border-r border-sidebar-border bg-sidebar w-64 md:w-72">
-      <SidebarHeader className="border-b border-sidebar-border p-4 md:p-6 bg-brand-primary">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30">
-            <Car className="w-5 h-5 md:w-6 md:h-6 text-white" />
+    <Sidebar className="border-r border-sidebar-border bg-sidebar">
+      <SidebarHeader className="border-b border-sidebar-border p-4 bg-brand-primary">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30">
+              <Car className="w-5 h-5 text-white" />
+            </div>
+            {state === "expanded" && (
+              <div>
+                <h2 className="text-lg font-bold text-white tracking-wide">TALENTO</h2>
+                <p className="text-xs text-white/80 font-medium">Veículos Premium</p>
+              </div>
+            )}
           </div>
-          <div>
-            <h2 className="text-lg md:text-xl font-bold text-white tracking-wide">TALENTO</h2>
-            <p className="text-xs text-white/80 font-medium">Veículos Premium</p>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8 text-white/80 hover:text-white hover:bg-white/20"
+            onClick={toggleSidebar}
+          >
+            <ChevronLeft className={`h-4 w-4 transition-transform duration-200 ${state === "collapsed" ? "rotate-180" : ""}`} />
+            <span className="sr-only">Minimizar barra lateral</span>
+          </Button>
         </div>
       </SidebarHeader>
       
       <SidebarContent className="bg-sidebar">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-sidebar-foreground/80 px-3 md:px-4 py-2 md:py-3 text-xs font-semibold uppercase tracking-wider">
-            {user?.type === 'admin' ? 'Administração' : 'Menu Principal'}
-          </SidebarGroupLabel>
-          <SidebarGroupContent className="px-1 md:px-2">
+          {state === "expanded" && (
+            <SidebarGroupLabel className="text-sidebar-foreground/80 px-3 py-2 text-xs font-semibold uppercase tracking-wider">
+              {user?.type === 'admin' ? 'Administração' : 'Menu Principal'}
+            </SidebarGroupLabel>
+          )}
+          <SidebarGroupContent className="px-1">
             <SidebarMenu>
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton 
                     className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all duration-200 rounded-lg mx-1 group"
                     onClick={() => handleNavigation(item.url)}
+                    tooltip={state === "collapsed" ? item.title : undefined}
                   >
-                    <div className="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 md:py-3 rounded-lg">
-                      <item.icon className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-200" />
-                      <span className="font-medium text-sm md:text-base">{item.title}</span>
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg">
+                      <item.icon className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
+                      {state === "expanded" && (
+                        <span className="font-medium text-sm">{item.title}</span>
+                      )}
                     </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -157,30 +150,34 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       
-      <SidebarFooter className="border-t border-sidebar-border p-3 md:p-4 bg-sidebar-accent/50">
+      <SidebarFooter className="border-t border-sidebar-border p-3 bg-sidebar-accent/50">
         <button 
           onClick={() => navigate('/profile')}
-          className="w-full flex items-center gap-2 md:gap-3 hover:bg-sidebar-accent/80 transition-all duration-200 rounded-lg p-2 group mb-2"
+          className="w-full flex items-center gap-2 hover:bg-sidebar-accent/80 transition-all duration-200 rounded-lg p-2 group mb-2"
         >
-          <div className="w-8 h-8 md:w-10 md:h-10 bg-brand-secondary/20 rounded-full flex items-center justify-center border border-brand-secondary/30">
-            <Users className="w-4 h-4 md:w-5 md:h-5 text-brand-secondary" />
+          <div className="w-8 h-8 bg-brand-secondary/20 rounded-full flex items-center justify-center border border-brand-secondary/30">
+            <Users className="w-4 h-4 text-brand-secondary" />
           </div>
-          <div className="text-left">
-            <p className="text-sm font-semibold text-sidebar-foreground">
-              {user?.type === 'admin' ? 'Administrador' : 'Meu Perfil'}
-            </p>
-            <p className="text-xs text-sidebar-foreground/70 truncate max-w-[120px] md:max-w-[160px]">
-              {user?.email || 'user@example.com'}
-            </p>
-          </div>
+          {state === "expanded" && (
+            <div className="text-left">
+              <p className="text-sm font-semibold text-sidebar-foreground">
+                {user?.type === 'admin' ? 'Administrador' : 'Meu Perfil'}
+              </p>
+              <p className="text-xs text-sidebar-foreground/70 truncate max-w-[120px]">
+                {user?.email || 'user@example.com'}
+              </p>
+            </div>
+          )}
         </button>
         
         <button 
           onClick={handleLogout}
-          className="w-full flex items-center gap-2 md:gap-3 hover:bg-red-100 hover:text-red-700 transition-all duration-200 rounded-lg p-2 group"
+          className="w-full flex items-center gap-2 hover:bg-red-100 hover:text-red-700 transition-all duration-200 rounded-lg p-2 group"
         >
-          <LogOut className="w-4 h-4 md:w-5 md:h-5" />
-          <span className="text-sm font-medium">Sair</span>
+          <LogOut className="w-4 h-4" />
+          {state === "expanded" && (
+            <span className="text-sm font-medium">Sair</span>
+          )}
         </button>
       </SidebarFooter>
     </Sidebar>

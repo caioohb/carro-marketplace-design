@@ -41,15 +41,6 @@ const PublicNav = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-4">
             <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
-            {showBackButton() && (
-              <Button variant="ghost" size="sm" onClick={() => window.history.back()}>
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Voltar
-              </Button>
-            )}
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">{getPageTitle()}</h1>
-            </div>
           </div>
 
           <div className="flex items-center gap-4">
