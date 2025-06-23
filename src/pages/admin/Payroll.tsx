@@ -181,6 +181,7 @@ const Payroll = () => {
               <Button onClick={handleAuthentication} className="w-full">
                 Acessar
               </Button>
+              <p><strong>Senha:</strong> 123</p>
             </div>
           </CardContent>
         </Card>
